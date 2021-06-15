@@ -2,14 +2,14 @@ const datasource = require("../../../../locators/DatasourcesEditor.json");
 const queryLocators = require("../../../../locators/QueryEditor.json");
 const commonlocators = require("../../../../locators/commonlocators.json");
 
-describe("Check datasource doc links", function() {
+describe("Check datasource doc links", function () {
   let postgresDatasourceName;
 
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
 
-  it("Create postgres datasource", function() {
+  it("Create postgres datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
     cy.generateUUID().then((uid) => {
@@ -31,7 +31,7 @@ describe("Check datasource doc links", function() {
     cy.testSaveDatasource();
   });
 
-  it("Check that documentation opens global modal", function() {
+  it("Check that documentation opens global modal", function () {
     cy.NavigateToQueryEditor();
 
     cy.contains(".t--datasource-name", postgresDatasourceName)
@@ -43,7 +43,7 @@ describe("Check datasource doc links", function() {
     cy.get("body").click(0, 0);
   });
 
-  it("Delete the query and datasources", function() {
+  it("Delete the query and datasources", function () {
     cy.get(queryLocators.deleteQuery).click();
     cy.wait("@deleteAction").should(
       "have.nested.property",

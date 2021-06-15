@@ -8,12 +8,12 @@ const dsl2 = require("../../../../fixtures/displayWidgetDsl.json");
 const explorer = require("../../../../locators/explorerlocators.json");
 const pageid = "MyPage";
 
-describe("Table Widget and Navigate to functionality validation", function() {
+describe("Table Widget and Navigate to functionality validation", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Table Widget Functionality with multiple page", function() {
+  it("Table Widget Functionality with multiple page", function () {
     cy.openPropertyPane("tablewidget");
     cy.widgetText("Table1", widgetsPage.tableWidget, commonlocators.tableInner);
     cy.testJsontext("tabledata", JSON.stringify(testdata.TablePagination));
@@ -26,7 +26,7 @@ describe("Table Widget and Navigate to functionality validation", function() {
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
   });
 
-  it("Create MyPage and valdiate if its successfully created", function() {
+  it("Create MyPage and valdiate if its successfully created", function () {
     cy.Createpage(pageid);
     cy.addDsl(dsl2);
     // eslint-disable-next-line cypress/no-unnecessary-waiting
@@ -34,7 +34,7 @@ describe("Table Widget and Navigate to functionality validation", function() {
     cy.get(`.t--entity-name:contains("${pageid}")`).should("be.visible");
   });
 
-  it("Validate NavigateTo Page functionality ", function() {
+  it("Validate NavigateTo Page functionality ", function () {
     cy.SearchEntityandOpen("Table1");
     //Below test to be enabled once the bug related to change of page in table in fixed
     //cy.get('.t--table-widget-next-page')

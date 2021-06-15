@@ -80,7 +80,7 @@
           "sectionName": "",
           "id": 2,
           "serverLabel": "findCommandForm",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -101,35 +101,35 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[3].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{rating : {$gte : 9}}"
+              "placeholderText": "{rating : {$gte : 9}}"
             },
             {
               "label": "Sort",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[4].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{name : 1}"
+              "placeholderText": "{name : 1}"
             },
             {
               "label": "Projection",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[5].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{name : 1}"
+              "placeholderText": "{name : 1}"
             },
             {
               "label": "Limit",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[6].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "10"
+              "placeholderText": "10"
             },
             {
               "label": "Skip",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[7].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "0"
+              "placeholderText": "0"
             }
           ]
         },
@@ -137,7 +137,7 @@
           "sectionName": "",
           "id": 3,
           "serverLabel": "updateOne",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -158,21 +158,21 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[8].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{rating : {$gte : 9}}"
+              "placeholderText": "{rating : {$gte : 9}}"
             },
             {
               "label": "Sort",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[9].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{name : 1}"
+              "placeholderText": "{name : 1}"
             },
             {
               "label": "Update",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[10].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{ $inc: { score: 1 } }"
+              "placeholderText": "{ $inc: { score: 1 } }"
             }
           ]
         },
@@ -180,7 +180,7 @@
           "sectionName": "",
           "id": 4,
           "serverLabel": "updateMany",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -201,14 +201,14 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[11].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{rating : {$gte : 9}}"
+              "placeholderText": "{rating : {$gte : 9}}"
             },
             {
               "label": "Update",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[12].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{ $inc: { score: 1 } }"
+              "placeholderText": "{ $inc: { score: 1 } }"
             }
           ]
         },
@@ -216,7 +216,7 @@
           "sectionName": "",
           "id": 5,
           "serverLabel": "delete",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -237,7 +237,7 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[13].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{rating : {$gte : 9}}"
+              "placeholderText": "{rating : {$gte : 9}}"
             },
             {
               "label": "Limit",
@@ -261,7 +261,7 @@
           "sectionName": "",
           "id": 6,
           "serverLabel": "count",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -282,7 +282,7 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[14].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{rating : {$gte : 9}}"
+              "placeholderText": "{rating : {$gte : 9}}"
             }
           ]
         },
@@ -290,7 +290,7 @@
           "sectionName": "",
           "id": 7,
           "serverLabel": "distinct",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -311,14 +311,14 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[15].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "{rating : {$gte : 9}}"
+              "placeholderText": "{rating : {$gte : 9}}"
             },
             {
               "label": "Key/Field",
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[16].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "name"
+              "placeholderText": "name"
             }
           ]
         },
@@ -326,7 +326,7 @@
           "sectionName": "",
           "id": 8,
           "serverLabel": "aggregate",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -347,7 +347,7 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[17].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "[{ $project: { tags: 1 } }, { $unwind: \"$tags\" }, { $group: { _id: \"$tags\", count: { $sum : 1 } } }  ]"
+              "placeholderText": "[{ $project: { tags: 1 } }, { $unwind: \"$tags\" }, { $group: { _id: \"$tags\", count: { $sum : 1 } } }  ]"
             }
           ]
         },
@@ -355,7 +355,7 @@
           "sectionName": "",
           "id": 9,
           "serverLabel": "insert",
-          "hidden" : {
+          "hidden": {
             "conditionType": "OR",
             "conditions": [
               {
@@ -376,7 +376,7 @@
               "configProperty": "actionConfiguration.pluginSpecifiedTemplates[18].value",
               "controlType": "QUERY_DYNAMIC_INPUT_TEXT",
               "evaluationSubstitutionType": "TEMPLATE",
-              "placeholderText" : "[ { _id: 1, user: \"abc123\", status: \"A\" } ]"
+              "placeholderText": "[ { _id: 1, user: \"abc123\", status: \"A\" } ]"
             }
           ]
         },

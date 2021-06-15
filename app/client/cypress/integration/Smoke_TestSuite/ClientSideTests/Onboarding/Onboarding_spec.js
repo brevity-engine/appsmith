@@ -3,8 +3,8 @@
 const homePage = require("../../../../locators/HomePage.json");
 const commonlocators = require("../../../../locators/commonlocators.json");
 
-describe("Onboarding", function() {
-  it("Onboarding flow", function() {
+describe("Onboarding", function () {
+  it("Onboarding flow", function () {
     cy.get(commonlocators.homeIcon).click({ force: true });
 
     cy.get(".t--welcome-tour").click();
@@ -40,9 +40,7 @@ describe("Onboarding", function() {
 
         // Create and run query
         // Using the cheat option to create the action with 30 sec timeout
-        cy.get(".t--onboarding-cheat-action")
-          .should("be.visible")
-          .click();
+        cy.get(".t--onboarding-cheat-action").should("be.visible").click();
 
         cy.wait("@postExecute").then((httpRequest) => {
           expect(httpRequest.response.body.data.isExecutionSuccess).to.be.true;
@@ -59,9 +57,7 @@ describe("Onboarding", function() {
         cy.get(".t--onboarding-action")
           .should("be.visible")
           .click({ force: true });
-        cy.get(".t--onboarding-cheat-action")
-          .should("be.visible")
-          .click();
+        cy.get(".t--onboarding-cheat-action").should("be.visible").click();
 
         // wait for animation duration
         // eslint-disable-next-line cypress/no-unnecessary-waiting
@@ -77,7 +73,7 @@ describe("Onboarding", function() {
   });
 
   // Similar to PublishtheApp command with little changes
-  it("Publish app", function() {
+  it("Publish app", function () {
     cy.server();
     cy.route("POST", "/api/v1/applications/publish/*").as("publishApp");
 

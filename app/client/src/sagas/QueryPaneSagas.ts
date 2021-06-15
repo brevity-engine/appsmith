@@ -139,12 +139,8 @@ function* formValueChangeSaga(
 }
 
 function* handleQueryCreatedSaga(actionPayload: ReduxAction<QueryAction>) {
-  const {
-    actionConfiguration,
-    id,
-    pluginId,
-    pluginType,
-  } = actionPayload.payload;
+  const { actionConfiguration, id, pluginId, pluginType } =
+    actionPayload.payload;
   if (pluginType === PluginType.DB) {
     yield put(initialize(QUERY_EDITOR_FORM_NAME, actionPayload.payload));
     const applicationId = yield select(getCurrentApplicationId);

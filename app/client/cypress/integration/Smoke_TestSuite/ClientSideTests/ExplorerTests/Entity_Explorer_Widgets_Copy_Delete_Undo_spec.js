@@ -12,8 +12,8 @@ before(() => {
   cy.addDsl(dsl);
 });
 
-describe("Test Suite to validate copy/delete/undo functionalites", function() {
-  it("Drag and drop form widget and validate copy widget via toast message", function() {
+describe("Test Suite to validate copy/delete/undo functionalites", function () {
+  it("Drag and drop form widget and validate copy widget via toast message", function () {
     cy.openPropertyPane("formwidget");
     cy.widgetText(
       "FormTest",
@@ -23,15 +23,13 @@ describe("Test Suite to validate copy/delete/undo functionalites", function() {
     cy.get(commonlocators.copyWidget).click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
-    cy.get(commonlocators.toastBody)
-      .first()
-      .contains("Copied");
+    cy.get(commonlocators.toastBody).first().contains("Copied");
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
   });
 
-  it("Delete Widget from sidebar and Undo action validation", function() {
+  it("Delete Widget from sidebar and Undo action validation", function () {
     cy.GlobalSearchEntity("FormTest");
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(2);
       expect($lis.eq(0)).to.contain("{{FormTest.isVisible}}");
       expect($lis.eq(1)).to.contain("{{FormTest.data}}");
@@ -47,9 +45,7 @@ describe("Test Suite to validate copy/delete/undo functionalites", function() {
       .click({ force: true });
       */
     cy.get(commonlocators.toastAction).should("be.visible");
-    cy.get(commonlocators.toastAction)
-      .contains("UNDO")
-      .click({ force: true });
+    cy.get(commonlocators.toastAction).contains("UNDO").click({ force: true });
     cy.wait("@updateLayout").should(
       "have.nested.property",
       "response.body.responseMeta.status",
@@ -57,7 +53,7 @@ describe("Test Suite to validate copy/delete/undo functionalites", function() {
     );
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(2);
       expect($lis.eq(0)).to.contain("{{FormTest.isVisible}}");
       expect($lis.eq(1)).to.contain("{{FormTest.data}}");

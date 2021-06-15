@@ -3,7 +3,7 @@ const commonlocators = require("../../../../locators/commonlocators.json");
 const queryLocators = require("../../../../locators/QueryEditor.json");
 const dsl = require("../../../../fixtures/MultipleWidgetDsl.json");
 
-describe("GlobalSearch", function() {
+describe("GlobalSearch", function () {
   before(() => {
     cy.addDsl(dsl);
   });

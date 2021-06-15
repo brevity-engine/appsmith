@@ -4,13 +4,13 @@ const pages = require("../../../../locators/Pages.json");
 const apiPage = require("../../../../locators/ApiEditor.json");
 const publishPage = require("../../../../locators/publishWidgetspage.json");
 
-describe("Test Create Api and Bind to Table widget", function() {
+describe("Test Create Api and Bind to Table widget", function () {
   let apiData;
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Test_Add users api and execute api", function() {
+  it("Test_Add users api and execute api", function () {
     cy.createAndFillApi(this.data.userApi, "/users");
     cy.RunAPI();
     cy.get(apiPage.responseBody)
@@ -26,15 +26,13 @@ describe("Test Create Api and Bind to Table widget", function() {
       });
   });
 
-  it("Test_Validate the Api data is updated on List widget", function() {
+  it("Test_Validate the Api data is updated on List widget", function () {
     cy.SearchEntityandOpen("List1");
     cy.getCodeMirror().then(($cm) => {
-      cy.get(".CodeMirror textarea")
-        .first()
-        .type(`{{Api1.data.users}}`, {
-          force: true,
-          parseSpecialCharSequences: false,
-        });
+      cy.get(".CodeMirror textarea").first().type(`{{Api1.data.users}}`, {
+        force: true,
+        parseSpecialCharSequences: false,
+      });
     });
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
     cy.get(".t--draggable-textwidget span").should("have.length", 4);
@@ -55,17 +53,15 @@ describe("Test Create Api and Bind to Table widget", function() {
       });
   });
 
-  it("Test_Validate the list widget ", function() {
+  it("Test_Validate the list widget ", function () {
     cy.get(publishPage.backToEditor).click({ force: true });
     cy.SearchEntityandOpen("List1");
 
     cy.getCodeMirror().then(($cm) => {
-      cy.get(".CodeMirror textarea")
-        .last()
-        .type(`50`, {
-          force: true,
-          parseSpecialCharSequences: false,
-        });
+      cy.get(".CodeMirror textarea").last().type(`50`, {
+        force: true,
+        parseSpecialCharSequences: false,
+      });
     });
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
     cy.get(".t--draggable-textwidget span").should("have.length", 2);

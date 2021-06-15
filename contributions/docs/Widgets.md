@@ -1,9 +1,12 @@
 # Widget docs
+
 1. Create a appsmith-docs/widget-reference/<widget>.md file.
 2. Follow the [asset-upload](UploadingAssets.md) guidelines to upload and use an asset in the docs.
 
 ## Widget docs template
-Copy paste this template 
+
+Copy paste this template
+
 ```
 ---
 description: >-
@@ -29,4 +32,3 @@ description: >-
 | **action2** | action2 description |
 | **action3** | action3 description |
 ```
-

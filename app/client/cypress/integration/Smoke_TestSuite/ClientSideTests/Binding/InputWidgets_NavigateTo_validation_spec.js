@@ -6,17 +6,15 @@ const testdata = require("../../../../fixtures/testdata.json");
 const dsl2 = require("../../../../fixtures/displayWidgetDsl.json");
 const pageid = "MyPage";
 
-describe("Binding the multiple Widgets and validating NavigateTo Page", function() {
+describe("Binding the multiple Widgets and validating NavigateTo Page", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Input widget test with default value from table widget", function() {
+  it("Input widget test with default value from table widget", function () {
     cy.openPropertyPane("inputwidget");
     cy.get(widgetsPage.defaultInput).type(testdata.defaultInputWidget);
-    cy.get(widgetsPage.inputOnTextChange)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.inputOnTextChange).first().click({ force: true });
     cy.get(commonlocators.chooseAction)
       .children()
       .contains("Navigate To")
@@ -27,7 +25,7 @@ describe("Binding the multiple Widgets and validating NavigateTo Page", function
     cy.wait(300);
   });
 
-  it("Create MyPage and valdiate if its successfully created", function() {
+  it("Create MyPage and valdiate if its successfully created", function () {
     cy.Createpage(pageid);
     cy.addDsl(dsl2);
     // eslint-disable-next-line cypress/no-unnecessary-waiting
@@ -35,7 +33,7 @@ describe("Binding the multiple Widgets and validating NavigateTo Page", function
     cy.get(`.t--entity-name:contains("${pageid}")`).should("be.visible");
   });
 
-  it("Validate NavigateTo Page functionality ", function() {
+  it("Validate NavigateTo Page functionality ", function () {
     cy.SearchEntityandOpen("Table1");
     cy.isSelectRow(1);
     cy.readTabledataPublish("1", "0").then((tabData) => {
@@ -48,9 +46,7 @@ describe("Binding the multiple Widgets and validating NavigateTo Page", function
         .should("contain", tabValue);
       cy.get(widgetsPage.chartWidget).should("not.exist");
 
-      cy.get(publish.inputGrp)
-        .first()
-        .type("123");
+      cy.get(publish.inputGrp).first().type("123");
 
       cy.get(widgetsPage.chartWidget).should("be.visible");
     });

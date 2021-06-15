@@ -4,7 +4,7 @@ const dsl = require("../../../../fixtures/uiBindDsl.json");
 const publishPage = require("../../../../locators/publishWidgetspage.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Binding the Datepicker and Text Widget", function() {
+describe("Binding the Datepicker and Text Widget", function () {
   let nextDay;
   let dateDp2;
 
@@ -12,7 +12,7 @@ describe("Binding the Datepicker and Text Widget", function() {
     cy.addDsl(dsl);
   });
 
-  it("DatePicker-Text, Validate selectedDate functionality", function() {
+  it("DatePicker-Text, Validate selectedDate functionality", function () {
     /**
      * Bind DatePicker1 to Text for "selectedDate"
      */
@@ -50,7 +50,7 @@ describe("Binding the Datepicker and Text Widget", function() {
     cy.get(commonlocators.backToEditor).click();
   });
 
-  it("DatePicker1-text: Change the date in DatePicker1 and Validate the same in text widget", function() {
+  it("DatePicker1-text: Change the date in DatePicker1 and Validate the same in text widget", function () {
     cy.openPropertyPane("textwidget");
 
     /**
@@ -90,7 +90,7 @@ describe("Binding the Datepicker and Text Widget", function() {
     });
   });
 
-  it("Validate the Date is not changed in DatePicker2", function() {
+  it("Validate the Date is not changed in DatePicker2", function () {
     cy.log("dateDp2:" + dateDp2);
     cy.get(formWidgetsPage.datepickerWidget + commonlocators.inputField)
       .eq(1)
@@ -104,7 +104,7 @@ describe("Binding the Datepicker and Text Widget", function() {
     cy.get(publishPage.backToEditor).click({ force: true });
   });
 
-  it("DatePicker-Text, Validate Multiple Binding", function() {
+  it("DatePicker-Text, Validate Multiple Binding", function () {
     /**
      * Bind the DatePicker1 and DatePicker2 along with hard coded text to Text widget
      */
@@ -119,7 +119,7 @@ describe("Binding the Datepicker and Text Widget", function() {
     cy.get(publishPage.backToEditor).click({ force: true });
   });
 
-  it("Checks if on deselection of date triggers the onDateSelected action or not.", function() {
+  it("Checks if on deselection of date triggers the onDateSelected action or not.", function () {
     /**
      * bind datepicker to show a message "Hello" on date selected
      */
@@ -133,9 +133,7 @@ describe("Binding the Datepicker and Text Widget", function() {
     /**
      * checking if on selecting the date triggers the message
      */
-    cy.get(formWidgetsPage.datepickerWidget)
-      .first()
-      .click();
+    cy.get(formWidgetsPage.datepickerWidget).first().click();
     cy.ClearDateFooter();
     cy.SetDateToToday();
     cy.get(commonlocators.toastmsg).contains("hello");
@@ -144,12 +142,8 @@ describe("Binding the Datepicker and Text Widget", function() {
      * checking if on deselecting the date triggers the message or not.
      * It should not trigger any message on deselection
      */
-    cy.get(formWidgetsPage.datepickerWidget)
-      .first()
-      .click();
-    cy.get(formWidgetsPage.datepickerFooter)
-      .contains("Clear")
-      .click();
+    cy.get(formWidgetsPage.datepickerWidget).first().click();
+    cy.get(formWidgetsPage.datepickerFooter).contains("Clear").click();
     cy.get(commonlocators.toastmsg).should("not.exist");
   });
 

@@ -9,8 +9,8 @@ spec:
     app: appsmith-internal-server
   type: NodePort
   ports:
-  - port: 8080
-    targetPort: 8080
+    - port: 8080
+      targetPort: 8080
 
 ---
 apiVersion: apps/v1
@@ -23,19 +23,19 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-        app: appsmith-internal-server
+      app: appsmith-internal-server
   template:
     metadata:
       labels:
         app: appsmith-internal-server
     spec:
       containers:
-      - envFrom:
-          - configMapRef:
-              name: application-config
-          - configMapRef:
-              name: encryption-config
-        image: appsmith/appsmith-server:latest
-        name: appsmith-internal-server
-        ports:
-          - containerPort: 8080
+        - envFrom:
+            - configMapRef:
+                name: application-config
+            - configMapRef:
+                name: encryption-config
+          image: appsmith/appsmith-server:latest
+          name: appsmith-internal-server
+          ports:
+            - containerPort: 8080

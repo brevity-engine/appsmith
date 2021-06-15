@@ -5,12 +5,12 @@ const dsl = require("../../../../fixtures/tableNewDsl.json");
 const pages = require("../../../../locators/Pages.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Table Widget property pane feature validation", function() {
+describe("Table Widget property pane feature validation", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Test to add column", function() {
+  it("Test to add column", function () {
     cy.openPropertyPane("tablewidget");
     cy.addColumn("CustomColumn");
     cy.tableColumnDataValidation("customColumn1"); //To be updated later
@@ -21,7 +21,7 @@ describe("Table Widget property pane feature validation", function() {
     cy.get(".draggable-header:contains('CustomColumn')").should("be.visible");
   });
 
-  it("Edit column name and validate test for computed value", function() {
+  it("Edit column name and validate test for computed value", function () {
     cy.editColumn("customColumn1");
     cy.readTabledataPublish("1", "2").then(() => {
       cy.updateComputedValue(testdata.currentRowWithIdOutside);

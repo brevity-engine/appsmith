@@ -1,6 +1,8 @@
 if (process.argv.length !== 5) {
-	console.error("Takes three arguments, the MongoDB URL (like 'mongodb://localhost:27017/mobtools'),\n" +
-		"\tthe encryption salt and the encryption password used by the server connecting to this DB.");
+	console.error(
+		"Takes three arguments, the MongoDB URL (like 'mongodb://localhost:27017/mobtools'),\n" +
+			"\tthe encryption salt and the encryption password used by the server connecting to this DB."
+	);
 	process.exit(1);
 }
 
@@ -21,7 +23,7 @@ const mongoClient = new MongoClient(MONGODB_URL, {
 console.time("total time taken");
 main()
 	.then(() => console.log("\nFinished Successfully."))
-	.catch(error => console.error(error))
+	.catch((error) => console.error(error))
 	.finally(() => {
 		mongoClient.close();
 		console.timeEnd("total time taken");
@@ -37,17 +39,27 @@ async function main() {
 		pluginPackageNameByIds[plugin._id.toString()] = plugin.packageName;
 	}
 
-	const templateOrganizationId = (await db.collection("config").findOne({name: "template-organization"})).config.organizationId;
+	const templateOrganizationId = (
+		await db.collection("config").findOne({ name: "template-organization" })
+	).config.organizationId;
 
-	const organization = await db.collection("organization").findOne({_id: ObjectID(templateOrganizationId)});
+	const organization = await db
+		.collection("organization")
+		.findOne({ _id: ObjectID(templateOrganizationId) });
 
-	const $datasources = await db.collection("datasource")
-		.find({organizationId: templateOrganizationId, deleted: false})
-		.map(datasource => {
+	const $datasources = await db
+		.collection("datasource")
+		.find({ organizationId: templateOrganizationId, deleted: false })
+		.map((datasource) => {
 			const datasourceConfiguration = datasource.datasourceConfiguration;
 
-			if (datasourceConfiguration.authentication && datasourceConfiguration.authentication.password) {
-				datasourceConfiguration.authentication.password = decrypt(datasourceConfiguration.authentication.password);
+			if (
+				datasourceConfiguration.authentication &&
+				datasourceConfiguration.authentication.password
+			) {
+				datasourceConfiguration.authentication.password = decrypt(
+					datasourceConfiguration.authentication.password
+				);
 			}
 
 			return {
@@ -64,11 +76,22 @@ async function main() {
 
 	const allPageIds = [];
 	const allDefaultPageIds = new Set();
-	const $applications = await db.collection("application")
-		.find({organizationId: templateOrganizationId, deleted: false, isPublic: true})
-		.map(application => {
-			allPageIds.push(...application.pages.map(page => ObjectID(page._id)));
-			allDefaultPageIds.add(application.pages.filter(page => page.isDefault)[0]._id.toString());
+	const $applications = await db
+		.collection("application")
+		.find({
+			organizationId: templateOrganizationId,
+			deleted: false,
+			isPublic: true,
+		})
+		.map((application) => {
+			allPageIds.push(
+				...application.pages.map((page) => ObjectID(page._id))
+			);
+			allDefaultPageIds.add(
+				application.pages
+					.filter((page) => page.isDefault)[0]
+					._id.toString()
+			);
 			return {
 				name: application.name,
 				isPublic: true,
@@ -82,7 +105,10 @@ async function main() {
 		.toArray();
 
 	const actionsByPageId = {};
-	for (const action of await db.collection("action").find({organizationId: templateOrganizationId, deleted: false}).toArray()) {
+	for (const action of await db
+		.collection("action")
+		.find({ organizationId: templateOrganizationId, deleted: false })
+		.toArray()) {
 		if (!actionsByPageId[action.pageId]) {
 			actionsByPageId[action.pageId] = [];
 		}
@@ -92,8 +118,10 @@ async function main() {
 			datasource: {
 				$isEmbedded,
 				name: action.datasource.name,
-				$pluginPackageName: pluginPackageNameByIds[action.datasource.pluginId],
-				datasourceConfiguration: action.datasource.datasourceConfiguration,
+				$pluginPackageName:
+					pluginPackageNameByIds[action.datasource.pluginId],
+				datasourceConfiguration:
+					action.datasource.datasourceConfiguration,
 				invalids: action.datasource.invalids,
 				deleted: false,
 				policies: [],
@@ -112,7 +140,10 @@ async function main() {
 	}
 
 	const pagesById = {};
-	for (const page of await db.collection("page").find({_id: {$in: allPageIds}}).toArray()) {
+	for (const page of await db
+		.collection("page")
+		.find({ _id: { $in: allPageIds } })
+		.toArray()) {
 		const pageId = page._id.toString();
 
 		for (const layout of page.layouts) {
@@ -161,7 +192,9 @@ async function main() {
 	};
 
 	if (finalData.slug !== "example-apps") {
-		console.warn("The slug of the organization in the generated dump is not `example-apps`. This might be significant.");
+		console.warn(
+			"The slug of the organization in the generated dump is not `example-apps`. This might be significant."
+		);
 	}
 
 	fs.writeFileSync(
@@ -173,34 +206,45 @@ async function main() {
 function findExamplesJsonPath() {
 	let projectDir = __dirname;
 
-	while (projectDir != null && !fs.existsSync(path.join(projectDir, "appsmith-server"))) {
+	while (
+		projectDir != null &&
+		!fs.existsSync(path.join(projectDir, "appsmith-server"))
+	) {
 		projectDir = path.dirname(projectDir);
 	}
 
-	return path.join(projectDir, "appsmith-server", "src", "main", "resources", "examples-organization.json");
+	return path.join(
+		projectDir,
+		"appsmith-server",
+		"src",
+		"main",
+		"resources",
+		"examples-organization.json"
+	);
 }
 
-
 /*!
-* Author: flohall
-* date: 2019-11-05
-* file: module/textEncryptor.js
-* Original: <https://stackoverflow.com/a/58720652/151048>.
-*/
+ * Author: flohall
+ * date: 2019-11-05
+ * file: module/textEncryptor.js
+ * Original: <https://stackoverflow.com/a/58720652/151048>.
+ */
 const key = CryptoJS.PBKDF2(ENCRYPTION_PASSWORD, ENCRYPTION_SALT, {
 	keySize: 256 / 32,
-	iterations: 1024
+	iterations: 1024,
 });
 
 const decryptConfig = {
 	// same as NULL_IV_GENERATOR of AesBytesEncryptor - so encryption creates always same cipher text for same input
-	iv: {words: [0, 0, 0, 0, 0, 0, 0, 0], sigBytes: 0},
+	iv: { words: [0, 0, 0, 0, 0, 0, 0, 0], sigBytes: 0 },
 	padding: CryptoJS.pad.Pkcs7,
-	mode: CryptoJS.mode.CBC
+	mode: CryptoJS.mode.CBC,
 };
 
 function decrypt(text) {
-	return CryptoJS.AES
-		.decrypt({ciphertext: CryptoJS.enc.Hex.parse(text)}, key, decryptConfig)
-		.toString(CryptoJS.enc.Utf8);
+	return CryptoJS.AES.decrypt(
+		{ ciphertext: CryptoJS.enc.Hex.parse(text) },
+		key,
+		decryptConfig
+	).toString(CryptoJS.enc.Utf8);
 }

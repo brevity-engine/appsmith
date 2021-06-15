@@ -5,11 +5,11 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 const dsl = require("../../../../fixtures/layoutdsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Tab widget test", function() {
+describe("Tab widget test", function () {
   before(() => {
     cy.addDsl(dsl);
   });
-  it("Tab Widget Functionality Test", function() {
+  it("Tab Widget Functionality Test", function () {
     cy.openPropertyPane("tabswidget");
     /**
      * @param{Text} Random Text
@@ -24,9 +24,7 @@ describe("Tab widget test", function() {
     cy.tabVerify(0, "Aditya");
     cy.tabVerify(1, "test");
     //Default  tab selection and validation
-    cy.get(Layoutpage.tabDefault)
-      .type(this.data.command)
-      .type("test");
+    cy.get(Layoutpage.tabDefault).type(this.data.command).type("test");
     cy.get(Layoutpage.tabWidget)
       .contains("test")
       .click({ force: true })
@@ -34,12 +32,8 @@ describe("Tab widget test", function() {
     cy.get(Layoutpage.tabButton).click({ force: true });
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.tabVerify(1, "Day");
-    cy.get(Layoutpage.tabDelete)
-      .eq(1)
-      .click({ force: true });
-    cy.get(Layoutpage.tabWidget)
-      .contains("Day")
-      .should("not.exist");
+    cy.get(Layoutpage.tabDelete).eq(1).click({ force: true });
+    cy.get(Layoutpage.tabWidget).contains("Day").should("not.exist");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(300);
     cy.openPropertyPane("tabswidget");
@@ -55,13 +49,13 @@ describe("Tab widget test", function() {
     cy.get(commonlocators.crossbutton).click({ force: true });
     cy.PublishtheApp();
   });
-  it("Tab Widget Functionality To Select Tabs", function() {
+  it("Tab Widget Functionality To Select Tabs", function () {
     cy.get(publish.tabWidget)
       .contains(this.data.tabName)
       .click({ force: true })
       .should("be.selected");
   });
-  it("Tab Widget Functionality To Unchecked Visible Widget", function() {
+  it("Tab Widget Functionality To Unchecked Visible Widget", function () {
     cy.get(publish.backToEditor).click();
     cy.openPropertyPane("tabswidget");
     cy.togglebarDisable(commonlocators.visibleCheckbox);
@@ -69,7 +63,7 @@ describe("Tab widget test", function() {
     cy.get(publish.tabWidget).should("not.exist");
     cy.get(publish.backToEditor).click();
   });
-  it("Tab Widget Functionality To Check Visible Widget", function() {
+  it("Tab Widget Functionality To Check Visible Widget", function () {
     cy.openPropertyPane("tabswidget");
     cy.togglebar(commonlocators.visibleCheckbox);
     cy.PublishtheApp();

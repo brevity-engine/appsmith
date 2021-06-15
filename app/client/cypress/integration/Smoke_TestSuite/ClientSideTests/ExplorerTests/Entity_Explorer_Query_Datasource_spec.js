@@ -9,7 +9,7 @@ const explorer = require("../../../../locators/explorerlocators.json");
 const pageid = "MyPage";
 let datasourceName;
 
-describe("Entity explorer tests related to query and datasource", function() {
+describe("Entity explorer tests related to query and datasource", function () {
   before(() => {
     cy.generateUUID().then((uid) => {
       datasourceName = uid;
@@ -20,7 +20,7 @@ describe("Entity explorer tests related to query and datasource", function() {
     cy.startRoutesForDatasource();
   });
 
-  it("Create a page/moveQuery/rename/delete in explorer", function() {
+  it("Create a page/moveQuery/rename/delete in explorer", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
 
@@ -90,17 +90,14 @@ describe("Entity explorer tests related to query and datasource", function() {
     );
 
     // cy.get(queryLocators.templateMenu).click();
-    cy.get(".CodeMirror textarea")
-      .first()
-      .focus()
-      .type("select * from users");
+    cy.get(".CodeMirror textarea").first().focus().type("select * from users");
 
     cy.EvaluateCurrentValue("select * from users");
 
     cy.get(`.t--entity.action:contains(Query1)`)
       .find(explorer.collapse)
       .click();
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(4);
       expect($lis.eq(0)).to.contain("{{Query1.isLoading}}");
       expect($lis.eq(1)).to.contain("{{Query1.data}}");

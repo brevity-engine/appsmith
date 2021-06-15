@@ -1,8 +1,8 @@
 const ApiEditor = require("../../../../locators/ApiEditor.json");
 const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 
-describe("Test curl import flow", function() {
-  it("Test curl import flow for POST action with JSON body", function() {
+describe("Test curl import flow", function () {
+  it("Test curl import flow for POST action with JSON body", function () {
     localStorage.setItem("ApiPaneV2", "ApiPaneV2");
     cy.NavigateToApiEditor();
     cy.get(ApiEditor.curlImage).click({ force: true });
@@ -27,7 +27,7 @@ describe("Test curl import flow", function() {
     });
   });
 
-  it("Test curl import flow for POST action with multipart form data", function() {
+  it("Test curl import flow for POST action with multipart form data", function () {
     localStorage.setItem("ApiPaneV2", "ApiPaneV2");
     cy.NavigateToApiEditor();
     cy.get(ApiEditor.curlImage).click({ force: true });

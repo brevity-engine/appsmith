@@ -1,7 +1,7 @@
 const commonlocators = require("../../../../locators/commonlocators.json");
 
-describe("API Panel Test Functionality ", function() {
-  it("Test API copy/Move/delete feature", function() {
+describe("API Panel Test Functionality ", function () {
+  it("Test API copy/Move/delete feature", function () {
     cy.log("Login Successful");
     cy.NavigateToAPI_Panel();
     cy.log("Navigation to API Panel screen successful");

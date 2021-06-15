@@ -5,11 +5,11 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 const dsl = require("../../../../fixtures/datepicker_switchDsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Switch Widget within Form widget Functionality", function() {
+describe("Switch Widget within Form widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
-  it("Switch Widget Functionality check with success message", function() {
+  it("Switch Widget Functionality check with success message", function () {
     cy.openPropertyPane("switchwidget");
     cy.widgetText(
       "Toggler",
@@ -23,14 +23,12 @@ describe("Switch Widget within Form widget Functionality", function() {
     cy.closePropertyPane();
   });
 
-  it("Date Widget with Reset widget being switch widget", function() {
+  it("Date Widget with Reset widget being switch widget", function () {
     cy.SearchEntityandOpen("DatePicker1");
     cy.get(formWidgetsPage.defaultDate).click();
     cy.SetDateToToday();
     cy.setDate(1, "ddd MMM DD YYYY");
-    const nextDay = Cypress.moment()
-      .add(1, "days")
-      .format("DD/MM/YYYY");
+    const nextDay = Cypress.moment().add(1, "days").format("DD/MM/YYYY");
     cy.log(nextDay);
     cy.get(widgetsPage.actionSelect).click();
     cy.get(commonlocators.chooseAction)
@@ -38,10 +36,7 @@ describe("Switch Widget within Form widget Functionality", function() {
       .contains("Reset Widget")
       .click();
     cy.get(widgetsPage.selectWidget).click({ force: true });
-    cy.get(commonlocators.chooseAction)
-      .children()
-      .contains("Toggler")
-      .click();
+    cy.get(commonlocators.chooseAction).children().contains("Toggler").click();
     cy.closePropertyPane();
     cy.get(widgetsPage.switchWidget).click();
     cy.get(widgetsPage.toastMsg)
@@ -55,7 +50,7 @@ describe("Switch Widget within Form widget Functionality", function() {
     cy.get(widgetsPage.switchWidgetInactive).should("be.visible");
   });
 
-  it("DatePicker-Date change and validate switch widget status", function() {
+  it("DatePicker-Date change and validate switch widget status", function () {
     cy.get(widgetsPage.datepickerInput).click({ force: true });
     cy.SetDateToToday();
     cy.get(widgetsPage.switchWidgetActive).should("be.visible");

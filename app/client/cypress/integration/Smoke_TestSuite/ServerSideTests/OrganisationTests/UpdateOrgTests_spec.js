@@ -1,10 +1,10 @@
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Update Organization", function() {
+describe("Update Organization", function () {
   let orgid;
   let newOrganizationName;
 
-  it("Open the org general settings and update org name. The update should reflect in the org. It should also reflect in the org names on the left side and the org dropdown.	", function() {
+  it("Open the org general settings and update org name. The update should reflect in the org. It should also reflect in the org names on the left side and the org dropdown.	", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid = uid;
@@ -34,7 +34,7 @@ describe("Update Organization", function() {
     });
   });
 
-  it("Open the org general settings and update org email. The update should reflect in the org.", function() {
+  it("Open the org general settings and update org email. The update should reflect in the org.", function () {
     cy.createOrg();
     cy.wait("@createOrg").then((interception) => {
       newOrganizationName = interception.response.body.data.name;
@@ -54,7 +54,7 @@ describe("Update Organization", function() {
     );
   });
 
-  it("Upload logo / delete logo and validate", function() {
+  it("Upload logo / delete logo and validate", function () {
     const fixturePath = "appsmithlogo.png";
     cy.xpath(homePage.uploadLogo).attachFile(fixturePath);
     cy.wait("@updateLogo").should(
@@ -76,7 +76,7 @@ describe("Update Organization", function() {
     );
   });
 
-  it("Open the org general settings and update org website. The update should reflect in the org.", function() {
+  it("Open the org general settings and update org website. The update should reflect in the org.", function () {
     cy.get(homePage.orgWebsiteInput).clear();
     cy.get(homePage.orgWebsiteInput).type("demowebsite");
     cy.wait("@updateOrganization").should(

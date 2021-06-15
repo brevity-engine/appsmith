@@ -6,12 +6,12 @@ const widgetsPage = require("../../../../locators/Widgets.json");
 let forkedApplicationDsl;
 let parentApplicationDsl;
 
-describe("Fork application across orgs", function() {
+describe("Fork application across orgs", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Check if the forked application has the same dsl as the original", function() {
+  it("Check if the forked application has the same dsl as the original", function () {
     const appname = localStorage.getItem("AppName");
     cy.SearchEntityandOpen("Input1");
     cy.get(widgetsPage.defaultInput).type("A");
@@ -25,18 +25,11 @@ describe("Fork application across orgs", function() {
     cy.get(homePage.searchInput).type(appname);
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(2000);
-    cy.get(homePage.applicationCard)
-      .first()
-      .trigger("mouseover");
-    cy.get(homePage.appMoreIcon)
-      .first()
-      .click({ force: true });
+    cy.get(homePage.applicationCard).first().trigger("mouseover");
+    cy.get(homePage.appMoreIcon).first().click({ force: true });
     cy.get(homePage.forkAppFromMenu).click({ force: true });
     // select a different org here
-    cy.get(homePage.forkAppOrgList)
-      .children()
-      .last()
-      .click({ force: true });
+    cy.get(homePage.forkAppOrgList).children().last().click({ force: true });
     cy.get(homePage.forkAppOrgButton).click({ force: true });
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(4000);

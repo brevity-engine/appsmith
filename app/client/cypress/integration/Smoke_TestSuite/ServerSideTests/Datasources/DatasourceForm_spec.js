@@ -1,11 +1,11 @@
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Datasource form related tests", function() {
+describe("Datasource form related tests", function () {
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
 
-  it("Check whether the delete button has the right color", function() {
+  it("Check whether the delete button has the right color", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("Testapi");
     cy.enterDatasourceAndPath(testdata.baseUrl, testdata.methods);
@@ -15,11 +15,11 @@ describe("Datasource form related tests", function() {
     cy.get(".t--add-field").click();
     cy.get(".t--delete-field").should("attr", "color", "#A3B3BF");
   });
-  it("Check if save button is disabled", function() {
+  it("Check if save button is disabled", function () {
     cy.get(".t--save-datasource").should("not.be.disabled");
   });
 
-  it("Check if saved api as a datasource does not fail on cloning", function() {
+  it("Check if saved api as a datasource does not fail on cloning", function () {
     cy.NavigateToAPI_Panel();
 
     cy.GlobalSearchEntity("Testapi");

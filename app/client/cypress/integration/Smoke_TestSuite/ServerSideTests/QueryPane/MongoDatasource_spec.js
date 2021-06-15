@@ -4,12 +4,12 @@ const datasource = require("../../../../locators/DatasourcesEditor.json");
 
 let datasourceName;
 
-describe("Create a query with a mongo datasource, run, save and then delete the query", function() {
+describe("Create a query with a mongo datasource, run, save and then delete the query", function () {
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
 
-  it("Create a query with a mongo datasource, run, save and then delete the query", function() {
+  it("Create a query with a mongo datasource, run, save and then delete the query", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.MongoDB).click();
 

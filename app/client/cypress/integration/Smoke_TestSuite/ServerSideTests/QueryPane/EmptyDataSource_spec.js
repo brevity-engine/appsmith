@@ -3,12 +3,12 @@ const datasource = require("../../../../locators/DatasourcesEditor.json");
 
 let datasourceName;
 
-describe("Create a query with a empty datasource, run, save the query", function() {
+describe("Create a query with a empty datasource, run, save the query", function () {
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
 
-  it("Create a empty datasource", function() {
+  it("Create a empty datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
     cy.testSaveDatasource();

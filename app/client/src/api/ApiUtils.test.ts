@@ -39,9 +39,8 @@ describe("axios api interceptors", () => {
         },
       };
 
-      const interceptedResponse: ActionExecutionResponse = apiSuccessResponseInterceptor(
-        response,
-      );
+      const interceptedResponse: ActionExecutionResponse =
+        apiSuccessResponseInterceptor(response);
 
       expect(interceptedResponse).toHaveProperty("clientMeta");
       expect(interceptedResponse.clientMeta).toHaveProperty("size");
@@ -60,9 +59,8 @@ describe("axios api interceptors", () => {
         },
       };
 
-      const interceptedResponse: ActionExecutionResponse = apiSuccessResponseInterceptor(
-        response,
-      );
+      const interceptedResponse: ActionExecutionResponse =
+        apiSuccessResponseInterceptor(response);
       expect(interceptedResponse).toBe("Test data");
     });
   });

@@ -4,12 +4,12 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 const dsl = require("../../../../fixtures/base64imagedsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Image Widget Functionality with base64", function() {
+describe("Image Widget Functionality with base64", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Image Widget Functionality Base64 validation", function() {
+  it("Image Widget Functionality Base64 validation", function () {
     cy.openPropertyPane("imagewidget");
     /**
      * Test for Base64 encoded image

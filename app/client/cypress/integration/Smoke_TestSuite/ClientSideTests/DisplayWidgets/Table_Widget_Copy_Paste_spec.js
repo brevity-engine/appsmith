@@ -12,8 +12,8 @@ before(() => {
   cy.addDsl(dsl);
 });
 
-describe("Test Suite to validate copy/paste table Widget", function() {
-  it("Copy paste table widget and valdiate application status", function() {
+describe("Test Suite to validate copy/paste table Widget", function () {
+  it("Copy paste table widget and valdiate application status", function () {
     const modifierKey = Cypress.platform === "darwin" ? "meta" : "ctrl";
 
     cy.openPropertyPane("tablewidget");
@@ -21,9 +21,7 @@ describe("Test Suite to validate copy/paste table Widget", function() {
     cy.get("body").type(`{${modifierKey}}c`);
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
-    cy.get(commonlocators.toastBody)
-      .first()
-      .contains("Copied");
+    cy.get(commonlocators.toastBody).first().contains("Copied");
     cy.get("body").click();
     cy.get("body").type(`{${modifierKey}}v`, { force: true });
     cy.wait("@updateLayout").should(
@@ -38,10 +36,8 @@ describe("Test Suite to validate copy/paste table Widget", function() {
       .click({ force: true });
     */
     cy.GlobalSearchEntity("Table1Copy");
-    cy.get(".t--entity-collapse-toggle")
-      .last()
-      .click();
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(".t--entity-collapse-toggle").last().click();
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(8);
       expect($lis.eq(0)).to.contain("{{Table1Copy.selectedRow}}");
       expect($lis.eq(1)).to.contain("{{Table1Copy.selectedRows}}");

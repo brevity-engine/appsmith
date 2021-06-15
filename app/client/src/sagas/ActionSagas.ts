@@ -203,9 +203,8 @@ export function* fetchActionsForViewModeSaga(
     { mode: "VIEWER", appId: applicationId },
   );
   try {
-    const response: GenericApiResponse<ActionViewMode[]> = yield ActionAPI.fetchActionsForViewMode(
-      applicationId,
-    );
+    const response: GenericApiResponse<ActionViewMode[]> =
+      yield ActionAPI.fetchActionsForViewMode(applicationId);
     const correctFormatResponse = response.data.map((action) => {
       return {
         ...action,

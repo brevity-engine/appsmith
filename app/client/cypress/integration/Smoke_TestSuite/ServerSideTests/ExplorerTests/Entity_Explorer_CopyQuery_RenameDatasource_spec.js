@@ -8,12 +8,12 @@ const pageid = "MyPage";
 let updatedName;
 let datasourceName;
 
-describe("Entity explorer tests related to copy query", function() {
+describe("Entity explorer tests related to copy query", function () {
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
 
-  it("Create a query with dataSource in explorer", function() {
+  it("Create a query with dataSource in explorer", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
 
@@ -40,10 +40,7 @@ describe("Entity explorer tests related to copy query", function() {
     );
 
     cy.get(queryLocators.templateMenu).click();
-    cy.get(".CodeMirror textarea")
-      .first()
-      .focus()
-      .type("select * from users");
+    cy.get(".CodeMirror textarea").first().focus().type("select * from users");
 
     cy.EvaluateCurrentValue("select * from users");
 
@@ -53,7 +50,7 @@ describe("Entity explorer tests related to copy query", function() {
       cy.get(`.t--entity.action:contains(Query1)`)
         .find(explorer.collapse)
         .click();
-      cy.get(apiwidget.propertyList).then(function($lis) {
+      cy.get(apiwidget.propertyList).then(function ($lis) {
         expect($lis).to.have.length(4);
         expect($lis.eq(0)).to.contain("{{Query1.isLoading}}");
         expect($lis.eq(1)).to.contain("{{Query1.data}}");
@@ -63,7 +60,7 @@ describe("Entity explorer tests related to copy query", function() {
     });
   });
 
-  it("Create a page and copy query in explorer", function() {
+  it("Create a page and copy query in explorer", function () {
     cy.Createpage(pageid);
     cy.GlobalSearchEntity("Query1");
     cy.xpath(apiwidget.popover)
@@ -78,7 +75,7 @@ describe("Entity explorer tests related to copy query", function() {
     cy.get(`.t--entity.action:contains(Query1)`)
       .find(explorer.collapse)
       .click({ multiple: true });
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(4);
       expect($lis.eq(0)).to.contain("{{Query1.isLoading}}");
       expect($lis.eq(1)).to.contain("{{Query1.data}}");
@@ -87,13 +84,11 @@ describe("Entity explorer tests related to copy query", function() {
     });
   });
 
-  it("Delete query and rename datasource in explorer", function() {
+  it("Delete query and rename datasource in explorer", function () {
     cy.get(commonlocators.entityExplorersearch).clear({ force: true });
     cy.NavigateToDatasourceEditor();
     cy.GlobalSearchEntity(`${datasourceName}`);
-    cy.get(`.t--entity-name:contains(${datasourceName})`)
-      .last()
-      .click();
+    cy.get(`.t--entity-name:contains(${datasourceName})`).last().click();
     cy.generateUUID().then((uid) => {
       updatedName = uid;
       cy.log("complete uid :" + updatedName);

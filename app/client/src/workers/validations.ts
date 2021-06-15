@@ -927,7 +927,8 @@ export const VALIDATORS: Record<VALIDATION_TYPES, Validator> = {
   [VALIDATION_TYPES.IMAGE]: (value: any): ValidationResponse => {
     let parsed = value;
     const base64ImageRegex = /^data:image\/.*;base64/;
-    const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpeg|jpg|gif|png)??(?:&?[^=&]*=[^=&]*)*/;
+    const imageUrlRegex =
+      /(http(s?):)([/|.|\w|\s|-])*\.(?:jpeg|jpg|gif|png)??(?:&?[^=&]*=[^=&]*)*/;
     if (isUndefined(value) || value === null) {
       return {
         isValid: true,

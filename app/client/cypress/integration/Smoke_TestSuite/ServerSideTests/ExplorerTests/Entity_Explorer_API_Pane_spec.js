@@ -3,8 +3,8 @@ const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 const explorer = require("../../../../locators/explorerlocators.json");
 const pageid = "MyPage";
 
-describe("Entity explorer API pane related testcases", function() {
-  it("Empty Message validation for Widgets/API/Queries", function() {
+describe("Entity explorer API pane related testcases", function () {
+  it("Empty Message validation for Widgets/API/Queries", function () {
     cy.log("Login Successful");
     cy.NavigateToWidgetsInExplorer();
     cy.get(explorer.NoWidgetsMsg).should("be.visible");
@@ -13,7 +13,7 @@ describe("Entity explorer API pane related testcases", function() {
     cy.reload();
   });
 
-  it("Move to page / edit API name /properties validation", function() {
+  it("Move to page / edit API name /properties validation", function () {
     cy.log("Login Successful");
     cy.NavigateToAPI_Panel();
     cy.log("Navigation to API Panel screen successful");
@@ -26,16 +26,14 @@ describe("Entity explorer API pane related testcases", function() {
     cy.get(`.t--entity.action:contains(FirstAPI)`)
       .find(explorer.collapse)
       .click();
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(4);
       expect($lis.eq(0)).to.contain("{{FirstAPI.isLoading}}");
       expect($lis.eq(1)).to.contain("{{FirstAPI.data}}");
       expect($lis.eq(2)).to.contain("{{FirstAPI.responseMeta}}");
       expect($lis.eq(3)).to.contain("{{FirstAPI.run()}}");
     });
-    cy.get(apiwidget.actionlist)
-      .contains(testdata.Get)
-      .should("be.visible");
+    cy.get(apiwidget.actionlist).contains(testdata.Get).should("be.visible");
     cy.Createpage(pageid);
     cy.GlobalSearchEntity("FirstAPI");
     cy.EditApiNameFromExplorer("SecondAPI");

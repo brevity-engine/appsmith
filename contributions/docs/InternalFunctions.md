@@ -1,11 +1,14 @@
 # Internal Function docs
 
 Steps to contribute:
+
 1. Create a appsmith-docs/function-reference/<function>.md file.
 2. Follow the [asset-upload](UploadingAssets.md) guidelines to upload and use an asset in the docs.
 
 ## Functions docs template
+
 Copy paste this template in the file you are updating
+
 ```bash
 ---
 description: >-
@@ -29,4 +32,3 @@ description: >-
 ```
 
 [Example Doc](https://github.com/appsmithorg/appsmith-docs/blob/v1.2/function-reference/show-modal.md)
-

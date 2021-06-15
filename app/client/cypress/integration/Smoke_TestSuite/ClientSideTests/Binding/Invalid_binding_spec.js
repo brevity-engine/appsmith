@@ -6,19 +6,19 @@ const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Binding the multiple widgets and validating default data", function() {
+describe("Binding the multiple widgets and validating default data", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Dropdown widget test with invalid binding value", function() {
+  it("Dropdown widget test with invalid binding value", function () {
     cy.openPropertyPane("dropdownwidget");
     cy.testJsontext("options", JSON.stringify(testdata.defaultdataBinding));
     cy.evaluateErrorMessage(testdata.dropdownErrorMsg);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
   });
 
-  it("Table widget test with invalid binding value", function() {
+  it("Table widget test with invalid binding value", function () {
     cy.openPropertyPane("tablewidget");
     cy.testJsontext("tabledata", JSON.stringify(testdata.defaultdataBinding));
     cy.evaluateErrorMessage(testdata.tableWidgetErrorMsg);

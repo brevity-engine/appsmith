@@ -5,12 +5,12 @@ const dsl = require("../../../../fixtures/tableNewDsl.json");
 const pages = require("../../../../locators/Pages.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Table Widget property pane feature validation", function() {
+describe("Table Widget property pane feature validation", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Check open section and column data in property pane", function() {
+  it("Check open section and column data in property pane", function () {
     cy.openPropertyPane("tablewidget");
     cy.tableColumnDataValidation("id");
     cy.tableColumnDataValidation("email");
@@ -27,7 +27,7 @@ describe("Table Widget property pane feature validation", function() {
     cy.get(".draggable-header:contains('CustomColumn')").should("be.visible");
   });
 
-  it("Edit column name and validate test for computed value based on column type selected", function() {
+  it("Edit column name and validate test for computed value based on column type selected", function () {
     cy.editColumn("id");
     cy.editColName("updatedId");
     cy.readTabledataPublish("1", "2").then((tabData) => {
@@ -66,45 +66,33 @@ describe("Table Widget property pane feature validation", function() {
     // });
   });
 
-  it("Test to validate text allignment", function() {
-    cy.get(widgetsPage.centerAlign)
-      .first()
-      .click({ force: true });
+  it("Test to validate text allignment", function () {
+    cy.get(widgetsPage.centerAlign).first().click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "justify-content", "center");
-    cy.get(widgetsPage.rightAlign)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.rightAlign).first().click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "justify-content", "flex-end");
-    cy.get(widgetsPage.leftAlign)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.leftAlign).first().click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "justify-content", "flex-start");
   });
 
-  it("Test to validate text format", function() {
+  it("Test to validate text format", function () {
     cy.get(widgetsPage.bold).click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "font-weight", "700");
     cy.get(widgetsPage.italics).click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "font-style", "italic");
   });
 
-  it("Test to validate vertical allignment", function() {
+  it("Test to validate vertical allignment", function () {
     cy.get(widgetsPage.verticalTop).click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "align-items", "flex-start");
-    cy.get(widgetsPage.verticalCenter)
-      .last()
-      .click({ force: true });
+    cy.get(widgetsPage.verticalCenter).last().click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "align-items", "center");
-    cy.get(widgetsPage.verticalBottom)
-      .last()
-      .click({ force: true });
+    cy.get(widgetsPage.verticalBottom).last().click({ force: true });
     cy.readTabledataValidateCSS("1", "1", "align-items", "flex-end");
   });
 
-  it("Test to validate text color and text background", function() {
-    cy.get(widgetsPage.textColor)
-      .first()
-      .click({ force: true });
+  it("Test to validate text color and text background", function () {
+    cy.get(widgetsPage.textColor).first().click({ force: true });
     cy.xpath(widgetsPage.greenColor).click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(5000);
@@ -114,9 +102,7 @@ describe("Table Widget property pane feature validation", function() {
     cy.testCodeMirrorLast("purple");
     cy.wait("@updateLayout");
     cy.readTabledataValidateCSS("1", "1", "color", "rgb(128, 0, 128)");
-    cy.get(widgetsPage.backgroundColor)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.backgroundColor).first().click({ force: true });
     cy.xpath(widgetsPage.greenColor).click();
     cy.wait("@updateLayout");
     cy.readTabledataValidateCSS(

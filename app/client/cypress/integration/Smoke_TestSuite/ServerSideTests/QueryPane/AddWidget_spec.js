@@ -3,7 +3,7 @@ const queryEditor = require("../../../../locators/QueryEditor.json");
 
 let datasourceName;
 
-describe("Add widget", function() {
+describe("Add widget", function () {
   beforeEach(() => {
     cy.startRoutesForDatasource();
     cy.createPostgresDatasource();

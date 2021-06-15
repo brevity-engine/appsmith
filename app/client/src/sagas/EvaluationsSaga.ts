@@ -67,9 +67,8 @@ function getLatestEvalPropertyErrors(
   };
 
   for (const evaluatedPath of evaluationOrder) {
-    const { entityName, propertyPath } = getEntityNameAndPropertyPath(
-      evaluatedPath,
-    );
+    const { entityName, propertyPath } =
+      getEntityNameAndPropertyPath(evaluatedPath);
     const entity = dataTree[entityName];
     if (isWidget(entity) || isAction(entity)) {
       if (propertyPath in entity.logBlackList) {
@@ -234,13 +233,8 @@ function* evaluateTreeSaga(
       widgetTypeConfigMap,
     },
   );
-  const {
-    dataTree,
-    dependencies,
-    errors,
-    evaluationOrder,
-    logs,
-  } = workerResponse;
+  const { dataTree, dependencies, errors, evaluationOrder, logs } =
+    workerResponse;
   log.debug({ dataTree: dataTree });
   logs.forEach((evalLog: any) => log.debug(evalLog));
   yield call(evalErrorHandler, errors, dataTree, evaluationOrder);

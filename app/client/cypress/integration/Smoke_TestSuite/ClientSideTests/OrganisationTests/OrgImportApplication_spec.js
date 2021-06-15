@@ -1,10 +1,10 @@
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Organization Import Application", function() {
+describe("Organization Import Application", function () {
   let orgid;
   let newOrganizationName;
   const fixtureDummyAppPath = "application-file.json";
-  it("Can Import Application", function() {
+  it("Can Import Application", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid = uid;

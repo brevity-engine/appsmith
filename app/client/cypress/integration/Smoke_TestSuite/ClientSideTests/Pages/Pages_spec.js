@@ -1,16 +1,14 @@
 const pages = require("../../../../locators/Pages.json");
 
-describe("Pages", function() {
+describe("Pages", function () {
   let veryLongPageName = `abcdefghijklmnopqrstuvwxyz1234`;
   let apiName = "someApi";
 
-  it("Clone page", function() {
+  it("Clone page", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI(apiName);
 
-    cy.xpath(pages.popover)
-      .last()
-      .click({ force: true });
+    cy.xpath(pages.popover).last().click({ force: true });
     cy.get(pages.clonePage).click({ force: true });
 
     cy.wait("@clonePage").should(

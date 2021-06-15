@@ -2,11 +2,11 @@ const dsl = require("../../../../fixtures/tableWidgetDsl.json");
 const commonlocators = require("../../../../locators/commonlocators.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("API Panel Test Functionality", function() {
+describe("API Panel Test Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
-  it("Will load an api on load", function() {
+  it("Will load an api on load", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("PageLoadApi");
     cy.enterDatasourceAndPath(testdata.baseUrl, testdata.methods);
@@ -29,7 +29,7 @@ describe("API Panel Test Functionality", function() {
     );
   });
 
-  it("Shows which action failed on action fail.", function() {
+  it("Shows which action failed on action fail.", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("PageLoadApi2");
     cy.enterDatasourceAndPath("https://abc.com", "users");

@@ -1,7 +1,7 @@
 const homePage = require("../../../locators/HomePage.json");
 
-describe("Deletion of organisational Logo ", function() {
-  it(" org logo upload ", function() {
+describe("Deletion of organisational Logo ", function () {
+  it(" org logo upload ", function () {
     //Click on the dropdown next to organisational Name
     // Navigate between tabs
     // Naviagte to General Tab

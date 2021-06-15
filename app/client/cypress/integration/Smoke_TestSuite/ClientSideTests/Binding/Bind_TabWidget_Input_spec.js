@@ -6,12 +6,12 @@ const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Binding the input Widget with tab Widget", function() {
+describe("Binding the input Widget with tab Widget", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Input widget test with default value from tab widget", function() {
+  it("Input widget test with default value from tab widget", function () {
     cy.SearchEntityandOpen("Input1");
     cy.get(widgetsPage.defaultInput).type(testdata.tabBinding);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
@@ -22,7 +22,7 @@ describe("Binding the input Widget with tab Widget", function() {
     );
   });
 
-  it("validation of data displayed in input widgets based on tab selected", function() {
+  it("validation of data displayed in input widgets based on tab selected", function () {
     cy.PublishtheApp();
     cy.get(publish.tabWidget)
       .contains("Tab 2")

@@ -9,10 +9,10 @@ describe("Tern server", () => {
       {
         input: {
           name: "test",
-          doc: ({
+          doc: {
             getCursor: () => ({ ch: 0, line: 0 }),
             getLine: () => "{{Api.}}",
-          } as unknown) as CodeMirror.Doc,
+          } as unknown as CodeMirror.Doc,
           changed: null,
         },
         expectedOutput: "{{Api.}}",
@@ -20,10 +20,10 @@ describe("Tern server", () => {
       {
         input: {
           name: "test",
-          doc: ({
+          doc: {
             getCursor: () => ({ ch: 0, line: 0 }),
             getLine: () => "a{{Api.}}",
-          } as unknown) as CodeMirror.Doc,
+          } as unknown as CodeMirror.Doc,
           changed: null,
         },
         expectedOutput: "a{{Api.}}",
@@ -31,10 +31,10 @@ describe("Tern server", () => {
       {
         input: {
           name: "test",
-          doc: ({
+          doc: {
             getCursor: () => ({ ch: 2, line: 0 }),
             getLine: () => "a{{Api.}}",
-          } as unknown) as CodeMirror.Doc,
+          } as unknown as CodeMirror.Doc,
           changed: null,
         },
         expectedOutput: "{{Api.}}",
@@ -53,11 +53,11 @@ describe("Tern server", () => {
       {
         input: {
           name: "test",
-          doc: ({
+          doc: {
             getCursor: () => ({ ch: 0, line: 0 }),
             getLine: () => "{{Api.}}",
             somethingSelected: () => false,
-          } as unknown) as CodeMirror.Doc,
+          } as unknown as CodeMirror.Doc,
           changed: null,
         },
         expectedOutput: { ch: 0, line: 0 },
@@ -65,11 +65,11 @@ describe("Tern server", () => {
       {
         input: {
           name: "test",
-          doc: ({
+          doc: {
             getCursor: () => ({ ch: 0, line: 1 }),
             getLine: () => "{{Api.}}",
             somethingSelected: () => false,
-          } as unknown) as CodeMirror.Doc,
+          } as unknown as CodeMirror.Doc,
           changed: null,
         },
         expectedOutput: { ch: 0, line: 0 },
@@ -77,11 +77,11 @@ describe("Tern server", () => {
       {
         input: {
           name: "test",
-          doc: ({
+          doc: {
             getCursor: () => ({ ch: 3, line: 1 }),
             getLine: () => "g {{Api.}}",
             somethingSelected: () => false,
-          } as unknown) as CodeMirror.Doc,
+          } as unknown as CodeMirror.Doc,
           changed: null,
         },
         expectedOutput: { ch: 1, line: 0 },
@@ -105,11 +105,11 @@ describe("Tern server", () => {
           codeEditor: {
             value: "{{}}",
             cursor: { ch: 2, line: 0 },
-            doc: ({
+            doc: {
               getCursor: () => ({ ch: 2, line: 0 }),
               getLine: () => "{{}}",
               somethingSelected: () => false,
-            } as unknown) as CodeMirror.Doc,
+            } as unknown as CodeMirror.Doc,
           },
           requestCallbackData: {
             completions: [{ name: "Api1" }],
@@ -124,11 +124,11 @@ describe("Tern server", () => {
           codeEditor: {
             value: "\n {{}}",
             cursor: { ch: 3, line: 1 },
-            doc: ({
+            doc: {
               getCursor: () => ({ ch: 3, line: 1 }),
               getLine: () => " {{}}",
               somethingSelected: () => false,
-            } as unknown) as CodeMirror.Doc,
+            } as unknown as CodeMirror.Doc,
           },
           requestCallbackData: {
             completions: [{ name: "Api1" }],
@@ -154,7 +154,7 @@ describe("Tern server", () => {
       const value: any = ternServer.requestCallback(
         null,
         testCase.input.requestCallbackData,
-        (MockCodemirrorEditor as unknown) as CodeMirror.Editor,
+        MockCodemirrorEditor as unknown as CodeMirror.Editor,
         () => null,
       );
 

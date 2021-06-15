@@ -3,12 +3,12 @@ const queryEditor = require("../../../../locators/QueryEditor.json");
 
 let datasourceName;
 
-describe("Postgres datasource test cases", function() {
+describe("Postgres datasource test cases", function () {
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
 
-  it("Create, test, save then delete a postgres datasource", function() {
+  it("Create, test, save then delete a postgres datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
     cy.getPluginFormsAndCreateDatasource();
@@ -19,7 +19,7 @@ describe("Postgres datasource test cases", function() {
     cy.testSaveDatasource();
   });
 
-  it("Create a new query from the datasource editor", function() {
+  it("Create a new query from the datasource editor", function () {
     cy.saveDatasource();
     cy.get(datasource.createQuerty).click();
     cy.wait("@createNewApi").should(

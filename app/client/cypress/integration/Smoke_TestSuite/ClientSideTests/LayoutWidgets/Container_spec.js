@@ -2,12 +2,12 @@ const commonlocators = require("../../../../locators/commonlocators.json");
 const widgetsPage = require("../../../../locators/Widgets.json");
 const dsl = require("../../../../fixtures/containerdsl.json");
 
-describe("Container Widget Functionality", function() {
+describe("Container Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Container Widget Functionality", function() {
+  it("Container Widget Functionality", function () {
     cy.openPropertyPane("containerwidget");
     /**
      * @param{Text} Random Text
@@ -22,9 +22,7 @@ describe("Container Widget Functionality", function() {
     /**
      * @param{Text} Random Colour
      */
-    cy.get(widgetsPage.backgroundcolorPicker)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.backgroundcolorPicker).first().click({ force: true });
     cy.xpath(widgetsPage.greenColor).click();
     cy.get(widgetsPage.containerD)
       .should("have.css", "background-color")
@@ -40,7 +38,7 @@ describe("Container Widget Functionality", function() {
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
     cy.PublishtheApp();
   });
-  it("Container Widget Functionality To Verify The Colour", function() {
+  it("Container Widget Functionality To Verify The Colour", function () {
     cy.get(widgetsPage.containerD)
       .eq(0)
       .should("have.css", "background-color")

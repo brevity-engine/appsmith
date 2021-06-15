@@ -385,9 +385,8 @@ function* createOnboardingDatasource() {
         },
       };
 
-      const datasourceResponse: GenericApiResponse<Datasource> = yield DatasourcesApi.createDatasource(
-        datasourceConfig,
-      );
+      const datasourceResponse: GenericApiResponse<Datasource> =
+        yield DatasourcesApi.createDatasource(datasourceConfig);
       yield validateResponse(datasourceResponse);
       yield checkAndGetPluginFormConfigsSaga(postgresPlugin.id);
       yield put({
@@ -430,8 +429,7 @@ function* listenForCreateAction() {
     setHelperConfig({
       ...helperConfig,
       image: {
-        src:
-          "https://res.cloudinary.com/drako999/image/upload/v1611839705/Appsmith/Onboarding/run.gif",
+        src: "https://res.cloudinary.com/drako999/image/upload/v1611839705/Appsmith/Onboarding/run.gif",
       },
     }),
   );
@@ -604,8 +602,7 @@ function* createQuery() {
         id: onboardingDatasource?.id,
       },
       actionConfiguration: {
-        body:
-          "Select avatar, name, notes from standup_updates order by id desc",
+        body: "Select avatar, name, notes from standup_updates order by id desc",
         timeoutInMillisecond: 30000,
       },
     } as Partial<QueryAction>;

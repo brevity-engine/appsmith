@@ -2,8 +2,8 @@ const testdata = require("../../../../fixtures/testdata.json");
 const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 const ApiEditor = require("../../../../locators/ApiEditor.json");
 
-describe("API Panel Test Functionality", function() {
-  afterEach(function() {
+describe("API Panel Test Functionality", function () {
+  afterEach(function () {
     cy.get(ApiEditor.ApiActionMenu).click({ force: true });
     cy.get(apiwidget.deleteAPI).click({ force: true });
     cy.wait("@deleteAction").should(
@@ -13,7 +13,7 @@ describe("API Panel Test Functionality", function() {
     );
   });
 
-  it("PUT Action test API fetaure", function() {
+  it("PUT Action test API fetaure", function () {
     cy.log("Login Successful");
     cy.NavigateToAPI_Panel();
     cy.log("Navigation to API Panel screen successful");
@@ -43,7 +43,7 @@ describe("API Panel Test Functionality", function() {
     cy.log("Response data check successful");
   });
 
-  it("Post Action test API fetaure", function() {
+  it("Post Action test API fetaure", function () {
     cy.CreateAPI("FirstAPI");
     cy.log("Creation of FirstAPI Action successful");
     cy.SelectAction(testdata.postAction);
@@ -70,7 +70,7 @@ describe("API Panel Test Functionality", function() {
     cy.log("Response data check successful");
   });
 
-  it("PATCH Action test API fetaure", function() {
+  it("PATCH Action test API fetaure", function () {
     cy.CreateAPI("FirstAPI");
     cy.log("Creation of FirstAPI Action successful");
     cy.SelectAction(testdata.patchAction);
@@ -101,7 +101,7 @@ describe("API Panel Test Functionality", function() {
     cy.log("Response data check successful");
   });
 
-  it("Delete Action test API fetaure", function() {
+  it("Delete Action test API fetaure", function () {
     cy.CreateAPI("FirstAPI");
     cy.log("Creation of FirstAPI Action successful");
     cy.SelectAction(testdata.deleteAction);
@@ -122,7 +122,7 @@ describe("API Panel Test Functionality", function() {
     cy.log("Response code check successful");
   });
 
-  it("Test GET Action for mock API with header and pagination", function() {
+  it("Test GET Action for mock API with header and pagination", function () {
     const apiname = "SecondAPI";
     cy.CreateAPI(apiname);
     cy.log("Creation of API Action successful");
@@ -160,7 +160,7 @@ describe("API Panel Test Functionality", function() {
     cy.log("Response data check successful");
   });
 
-  it("API check with query params test API fetaure", function() {
+  it("API check with query params test API fetaure", function () {
     cy.CreateAPI("ThirdAPI");
     cy.log("Creation of API Action successful");
     cy.enterDatasourceAndPath(testdata.baseUrl, testdata.queryAndValue);
@@ -173,7 +173,7 @@ describe("API Panel Test Functionality", function() {
     cy.log("Response data check successful");
   });
 
-  it("API check with Invalid Header", function() {
+  it("API check with Invalid Header", function () {
     cy.CreateAPI("FourthAPI");
     cy.log("Creation of API Action successful");
     cy.EnterSourceDetailsWithHeader(

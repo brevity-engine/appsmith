@@ -2,11 +2,11 @@
 
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Org Settings validation spec", function() {
+describe("Org Settings validation spec", function () {
   let orgid;
   let newOrganizationName;
 
-  it("create org with long name should use ellipsis validation", function() {
+  it("create org with long name should use ellipsis validation", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid =

@@ -9,7 +9,7 @@ const commonlocators = require("../../../../locators/commonlocators.json");
 
 let datasourceName;
 
-describe("Addwidget from Query and bind with other widgets", function() {
+describe("Addwidget from Query and bind with other widgets", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -61,7 +61,7 @@ describe("Addwidget from Query and bind with other widgets", function() {
       200,
     );
   });
-  it("validation of data displayed in input widget based on row data selected", function() {
+  it("validation of data displayed in input widget based on row data selected", function () {
     cy.isSelectRow(1);
     cy.readTabledataPublish("1", "0").then((tabData) => {
       const tabValue = tabData;

@@ -31,15 +31,12 @@ export const smartSubstituteDynamicValues = (
   subSegments: string[],
   subSegmentValues: unknown[],
 ): string => {
-  const {
-    binding,
-    subBindings,
-    subValues,
-  } = filterBindingSegmentsAndRemoveQuotes(
-    originalBinding,
-    subSegments,
-    subSegmentValues,
-  );
+  const { binding, subBindings, subValues } =
+    filterBindingSegmentsAndRemoveQuotes(
+      originalBinding,
+      subSegments,
+      subSegmentValues,
+    );
   let finalBinding = binding;
   subBindings.forEach((b, i) => {
     const value = subValues[i];
@@ -71,15 +68,12 @@ export const parameterSubstituteDynamicValues = (
   subSegments: string[],
   subSegmentValues: unknown[],
 ) => {
-  const {
-    binding,
-    subBindings,
-    subValues,
-  } = filterBindingSegmentsAndRemoveQuotes(
-    originalBinding,
-    subSegments,
-    subSegmentValues,
-  );
+  const { binding, subBindings, subValues } =
+    filterBindingSegmentsAndRemoveQuotes(
+      originalBinding,
+      subSegments,
+      subSegmentValues,
+    );
   let finalBinding = binding;
   const parameters: Record<string, unknown> = {};
   subBindings.forEach((b, i) => {

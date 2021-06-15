@@ -1,9 +1,9 @@
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Update a user's name", function() {
+describe("Update a user's name", function () {
   let username;
 
-  it("Update a user's name", function() {
+  it("Update a user's name", function () {
     cy.get(homePage.profileMenu).click();
     cy.get(".t--edit-profile").click({ force: true });
 
@@ -21,7 +21,7 @@ describe("Update a user's name", function() {
     });
   });
 
-  it("Validate email address and Reset pwd", function() {
+  it("Validate email address and Reset pwd", function () {
     cy.intercept("POST", "/api/v1/users/forgotPassword", {
       fixture: "resetPassword.json",
     }).as("resetPwd");
@@ -37,10 +37,7 @@ describe("Update a user's name", function() {
         const someText = text;
         expect(someText).to.equal(Cypress.env("USERNAME"));
       });
-    cy.get(".react-tabs a")
-      .last()
-      .contains("Reset Password")
-      .click();
+    cy.get(".react-tabs a").last().contains("Reset Password").click();
     cy.wait("@resetPwd").should(
       "have.nested.property",
       "response.body.responseMeta.status",

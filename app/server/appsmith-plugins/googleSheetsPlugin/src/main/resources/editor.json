@@ -74,10 +74,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "IN",
-            "value": [
-              "CREATE",
-              "LIST"
-            ]
+            "value": ["CREATE", "LIST"]
           },
           "placeholderText": "https://docs.google.com/spreadsheets/d/xyz/edit#gid=0"
         },
@@ -95,9 +92,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "NOT_IN",
-            "value": [
-              "CREATE"
-            ]
+            "value": ["CREATE"]
           },
           "initialValue": ""
         },
@@ -214,9 +209,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "NOT_IN",
-            "value": [
-              "GET"
-            ]
+            "value": ["GET"]
           },
           "initialValue": "ROWS",
           "options": [
@@ -286,9 +279,7 @@
               {
                 "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
                 "comparison": "NOT_IN",
-                "value": [
-                  "GET"
-                ]
+                "value": ["GET"]
               },
               {
                 "conditionType": "AND",
@@ -324,9 +315,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "NOT_IN",
-            "value": [
-              "DELETE_ROW"
-            ]
+            "value": ["DELETE_ROW"]
           },
           "initialValue": "",
           "placeholderText": "0"
@@ -384,10 +373,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "NOT_IN",
-            "value": [
-              "APPEND",
-              "UPDATE"
-            ]
+            "value": ["APPEND", "UPDATE"]
           },
           "placeholderText": "{{\n  {\n    ...Table1.selectedRow, \n    columnName: Input1.text\n  }\n}}"
         },
@@ -405,11 +391,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "NOT_IN",
-            "value": [
-              "CREATE",
-              "BULK_APPEND",
-              "BULK_UPDATE"
-            ]
+            "value": ["CREATE", "BULK_APPEND", "BULK_UPDATE"]
           },
           "placeholderText": "{{\n  Table1.selectedRows.map((row) => {\n    return { ...row, columnName: Input1.text }\n  })\n}}"
         }

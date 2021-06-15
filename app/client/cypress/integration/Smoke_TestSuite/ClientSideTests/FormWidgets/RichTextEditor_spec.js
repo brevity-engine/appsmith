@@ -3,7 +3,7 @@ const formWidgetsPage = require("../../../../locators/FormWidgets.json");
 const dsl = require("../../../../fixtures/formdsl1.json");
 const publishPage = require("../../../../locators/publishWidgetspage.json");
 
-describe("RichTextEditor Widget Functionality", function() {
+describe("RichTextEditor Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -12,7 +12,7 @@ describe("RichTextEditor Widget Functionality", function() {
     cy.openPropertyPane("richtexteditorwidget");
   });
 
-  it("RichTextEditor-Edit Text area with HTML body functionality", function() {
+  it("RichTextEditor-Edit Text area with HTML body functionality", function () {
     //changing the Text Name
     cy.widgetText(
       this.data.RichTextEditorName,
@@ -48,7 +48,7 @@ describe("RichTextEditor Widget Functionality", function() {
     );
   });
 
-  it("RichTextEditor-Enable Validation", function() {
+  it("RichTextEditor-Enable Validation", function () {
     //Uncheck the Disabled checkbox
     cy.UncheckWidgetProperties(formWidgetsPage.disableJs);
     cy.validateEnableWidget(
@@ -63,7 +63,7 @@ describe("RichTextEditor Widget Functionality", function() {
     );
   });
 
-  it("RichTextEditor-Disable Validation", function() {
+  it("RichTextEditor-Disable Validation", function () {
     //Check the Disabled checkbox
     cy.CheckWidgetProperties(formWidgetsPage.disableJs);
     cy.validateDisableWidget(
@@ -78,14 +78,14 @@ describe("RichTextEditor Widget Functionality", function() {
     );
   });
 
-  it("RichTextEditor-check Visible field  validation", function() {
+  it("RichTextEditor-check Visible field  validation", function () {
     // Uncheck the visible checkbox
     cy.UncheckWidgetProperties(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publishPage.richTextEditorWidget).should("not.exist");
   });
 
-  it("RichTextEditor-uncheck Visible field validation", function() {
+  it("RichTextEditor-uncheck Visible field validation", function () {
     // Check the visible checkbox
     cy.CheckWidgetProperties(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
