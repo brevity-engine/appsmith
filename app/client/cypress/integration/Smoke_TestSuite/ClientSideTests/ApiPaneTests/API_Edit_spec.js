@@ -1,8 +1,8 @@
 const testdata = require("../../../../fixtures/testdata.json");
 const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 
-describe("API Panel Test Functionality", function() {
-  it("Test Search API fetaure", function() {
+describe("API Panel Test Functionality", function () {
+  it("Test Search API fetaure", function () {
     cy.log("Login Successful");
     cy.NavigateToAPI_Panel();
     cy.log("Navigation to API Panel screen successful");
@@ -25,7 +25,7 @@ describe("API Panel Test Functionality", function() {
     cy.ClearSearch();
   });
 
-  it("Should not crash on key delete", function() {
+  it("Should not crash on key delete", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("CrashTestAPI");
     cy.SelectAction(testdata.postAction);
@@ -40,7 +40,7 @@ describe("API Panel Test Functionality", function() {
     cy.xpath(apiwidget.headerKey).should("have.value", "");
   });
 
-  it("Should correctly parse query params", function() {
+  it("Should correctly parse query params", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("APIWithQueryParams");
     cy.get("textarea").should(

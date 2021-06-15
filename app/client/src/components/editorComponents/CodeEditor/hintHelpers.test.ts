@@ -71,8 +71,9 @@ describe("hint helpers", () => {
       expect(MockCodemirrorEditor.showHint).toHaveBeenCalledTimes(
         showHintCount,
       );
-      const closeHintCount = cases.filter((c) => c.toCall === "closeHint")
-        .length;
+      const closeHintCount = cases.filter(
+        (c) => c.toCall === "closeHint",
+      ).length;
       expect(MockCodemirrorEditor.closeHint).toHaveBeenCalledTimes(
         closeHintCount,
       );

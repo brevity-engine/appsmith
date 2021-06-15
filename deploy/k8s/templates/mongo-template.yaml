@@ -30,21 +30,21 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-      - name: mongo
-        image: mongo
-        ports:
-          - containerPort: 27017
-        volumeMounts:
-          - name: mongo-persistent-storage
-            mountPath: /data/db
-        envFrom:
-          - configMapRef:
-              name: mongo-config
+        - name: mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db
+          envFrom:
+            - configMapRef:
+                name: mongo-config
   volumeClaimTemplates:
-  - metadata:
-      name: mongo-persistent-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 10Gi
+    - metadata:
+        name: mongo-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi

@@ -6,11 +6,7 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 describe("Page Load tests", () => {
   before(() => {
     cy.addDsl(dsl);
-    cy.get("div")
-      .contains("Pages")
-      .next()
-      .next()
-      .click();
+    cy.get("div").contains("Pages").next().next().click();
     cy.get("h2").contains("Drag and drop a widget here");
     cy.addDsl(dsl);
   });
@@ -47,9 +43,7 @@ describe("Page Load tests", () => {
       "This is Page 2",
     );
     // Switch page
-    cy.get(".t--page-switch-tab")
-      .contains("Page1")
-      .click({ force: true });
+    cy.get(".t--page-switch-tab").contains("Page1").click({ force: true });
     // Assert active page tab
     cy.get(".t--page-switch-tab")
       .contains("Page1")
@@ -66,9 +60,7 @@ describe("Page Load tests", () => {
   it("Hide Page and validate published app", () => {
     cy.get(publish.backToEditor).click();
     cy.GlobalSearchEntity("Page1");
-    cy.xpath(pages.popover)
-      .last()
-      .click({ force: true });
+    cy.xpath(pages.popover).last().click({ force: true });
     cy.get(pages.hidePage).click({ force: true });
     cy.ClearSearch();
     cy.PublishtheApp();

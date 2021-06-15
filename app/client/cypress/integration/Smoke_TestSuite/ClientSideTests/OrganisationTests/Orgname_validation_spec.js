@@ -2,23 +2,21 @@
 
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Org name validation spec", function() {
+describe("Org name validation spec", function () {
   let orgid;
   let newOrganizationName;
-  it("create org with leading space validation", function() {
+  it("create org with leading space validation", function () {
     cy.NavigateToHome();
     cy.createOrg();
     cy.wait("@createOrg").then((interception) => {
       newOrganizationName = interception.response.body.data.name;
       cy.NavigateToHome();
       cy.contains(newOrganizationName).click({ force: true });
-      cy.get(homePage.renameOrgInput)
-        .should("be.visible")
-        .type(" ");
+      cy.get(homePage.renameOrgInput).should("be.visible").type(" ");
       cy.get(".error-message").should("be.visible");
     });
   });
-  it("creates org and checks that orgname is editable", function() {
+  it("creates org and checks that orgname is editable", function () {
     cy.createOrg();
     cy.generateUUID().then((uid) => {
       orgid =
@@ -32,7 +30,7 @@ describe("Org name validation spec", function() {
       });
     });
   });
-  it("create org with special characters validation", function() {
+  it("create org with special characters validation", function () {
     cy.createOrg();
     cy.wait("@createOrg").then((interception) => {
       newOrganizationName = interception.response.body.data.name;

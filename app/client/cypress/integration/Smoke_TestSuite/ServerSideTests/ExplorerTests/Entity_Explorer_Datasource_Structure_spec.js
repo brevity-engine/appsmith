@@ -6,7 +6,7 @@ const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 
 let datasourceName;
 
-describe("Entity explorer datasource structure", function() {
+describe("Entity explorer datasource structure", function () {
   beforeEach(() => {
     cy.ClearSearch();
     cy.startRoutesForDatasource();
@@ -16,7 +16,7 @@ describe("Entity explorer datasource structure", function() {
     });
   });
 
-  it("Entity explorer datasource structure", function() {
+  it("Entity explorer datasource structure", function () {
     cy.NavigateToQueryEditor();
     cy.contains(".t--datasource-name", datasourceName)
       .find(queryLocators.createQuery)
@@ -45,14 +45,10 @@ describe("Entity explorer datasource structure", function() {
       .first()
       .find(explorer.collapse)
       .click();
-    cy.get(explorer.datasourceColumn)
-      .first()
-      .click();
+    cy.get(explorer.datasourceColumn).first().click();
     cy.get(".bp3-popover-content").should("be.visible");
 
-    cy.get(explorer.templateMenuIcon)
-      .first()
-      .click({ force: true });
+    cy.get(explorer.templateMenuIcon).first().click({ force: true });
     cy.get(".bp3-popover-content")
       .last()
       .contains("SELECT")
@@ -84,7 +80,7 @@ describe("Entity explorer datasource structure", function() {
     cy.deleteDatasource(datasourceName);
   });
 
-  it("Refresh datasource structure", function() {
+  it("Refresh datasource structure", function () {
     cy.NavigateToQueryEditor();
     cy.contains(".t--datasource-name", datasourceName)
       .find(queryLocators.createQuery)
@@ -120,12 +116,8 @@ describe("Entity explorer datasource structure", function() {
     );
 
     cy.GlobalSearchEntity(datasourceName);
-    cy.get("@datasourceEntityCollapse")
-      .first()
-      .click();
-    cy.xpath(explorer.datsourceEntityPopover)
-      .last()
-      .click({ force: true });
+    cy.get("@datasourceEntityCollapse").first().click();
+    cy.xpath(explorer.datsourceEntityPopover).last().click({ force: true });
 
     cy.get(explorer.refreshStructure).click({ force: true });
     cy.wait("@getDatasourceStructure").should(

@@ -3,8 +3,8 @@ const queryLocators = require("../../../../locators/QueryEditor.json");
 const plugins = require("../../../../fixtures/plugins.json");
 let datasourceName;
 
-describe("Create, test, save then delete a mongo datasource", function() {
-  it("Create, test, save then delete a mongo datasource", function() {
+describe("Create, test, save then delete a mongo datasource", function () {
+  it("Create, test, save then delete a mongo datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.MongoDB).click();
     cy.getPluginFormsAndCreateDatasource();

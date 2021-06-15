@@ -41,6 +41,7 @@
 If you want to add a new env variable to cypress tests, add it to the `cypress.env.json` file and also in the documentation above.
 
 All ENV variables from your `.env` file and all `APPSMITH_*` env variables from `process.env` are accessible with the `Cypress.env()` method.
+
 ## How do I add environment variables required for Cypress tests?
 
 **Note:** This can only be done by the project maintainers. Please contact one of them if you require this step to be accomplished.

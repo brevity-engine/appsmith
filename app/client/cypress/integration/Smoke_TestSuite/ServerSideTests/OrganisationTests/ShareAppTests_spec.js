@@ -3,13 +3,13 @@
 const homePage = require("../../../../locators/HomePage.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 
-describe("Create new org and share with a user", function() {
+describe("Create new org and share with a user", function () {
   let orgid;
   let appid;
   let currentUrl;
   let newOrganizationName;
 
-  it("create org and then share with a user from Application share option within application", function() {
+  it("create org and then share with a user from Application share option within application", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid = uid;
@@ -33,22 +33,20 @@ describe("Create new org and share with a user", function() {
     cy.LogOut();
   });
 
-  it("login as invited user and then validate viewer privilage", function() {
+  it("login as invited user and then validate viewer privilage", function () {
     cy.LogintoApp(Cypress.env("TESTUSERNAME1"), Cypress.env("TESTPASSWORD1"));
     cy.get(homePage.searchInput).type(appid);
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(2000);
     cy.get(homePage.appsContainer).contains(orgid);
-    cy.xpath(homePage.ShareBtn)
-      .first()
-      .should("be.visible");
+    cy.xpath(homePage.ShareBtn).first().should("be.visible");
     cy.get(homePage.applicationCard).trigger("mouseover");
     cy.get(homePage.appEditIcon).should("not.exist");
     cy.launchApp(appid);
     cy.LogOut();
   });
 
-  it("Enable public access to Application", function() {
+  it("Enable public access to Application", function () {
     cy.LoginFromAPI(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.visit("/applications");
     cy.wait("@applications").should(
@@ -75,7 +73,7 @@ describe("Create new org and share with a user", function() {
     cy.LogOut();
   });
 
-  it("login as uninvited user and then validate public access of Application", function() {
+  it("login as uninvited user and then validate public access of Application", function () {
     cy.LoginFromAPI(Cypress.env("TESTUSERNAME2"), Cypress.env("TESTPASSWORD2"));
     cy.visit(currentUrl);
     cy.wait("@getPagesForViewApp").should(
@@ -92,7 +90,7 @@ describe("Create new org and share with a user", function() {
     cy.LogOut();
   });
 
-  it("login as Owner and disable public access", function() {
+  it("login as Owner and disable public access", function () {
     cy.LoginFromAPI(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.visit("/applications");
     cy.wait("@applications").should(
@@ -112,7 +110,7 @@ describe("Create new org and share with a user", function() {
     cy.LogOut();
   });
 
-  it("login as uninvited user and then validate public access disable feature", function() {
+  it("login as uninvited user and then validate public access disable feature", function () {
     cy.LoginFromAPI(Cypress.env("TESTUSERNAME2"), Cypress.env("TESTPASSWORD2"));
     cy.visit(currentUrl);
     cy.wait("@viewApp").should(
@@ -123,7 +121,7 @@ describe("Create new org and share with a user", function() {
     cy.LogOut();
   });
 
-  it("login as owner and delete App ", function() {
+  it("login as owner and delete App ", function () {
     cy.LoginFromAPI(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.visit("/applications");
     cy.wait("@applications").should(

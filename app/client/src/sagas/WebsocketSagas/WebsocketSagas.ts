@@ -125,7 +125,7 @@ function* flow() {
       }
     } catch (e) {
       // this has to be non blocking
-      yield fork(function*() {
+      yield fork(function* () {
         yield delay(3000);
         yield put(retrySocketConnection());
       });

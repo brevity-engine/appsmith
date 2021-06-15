@@ -1,9 +1,9 @@
 ## Appsmith Office Hours 👩🏽‍💻 👋🏼
 
 [Sign Up For Office Hours](https://app.appsmith.com/applications/602b8aef12ba0d29d3ec151c/pages/602b8aef12ba0d29d3ec151e)
-  
------------------
-  
+
+---
+
 Appsmith office hours are a dedicated time slot in which our team will be available to help our users real time. It also gives us an opportunity to interact with the community, understand your concerns and communicate our thinking to you. Office hours are conducted by the appsmith team every week for 1 hour at 10am CET on Tuesday and 10am PST on Fridays.
 
 The office hours broadly covers the following topics:
@@ -19,12 +19,11 @@ The office hours broadly covers the following topics:
 Multiple appsmith team members will be on the call, and will step-in to help wherever relevant. The office hours are recorded and will be put up in our [youtube channel](https://www.youtube.com/watch?v=Uqk9jy5CXxY&list=PLE_KXGiWfqwiUzo4-wG1WzU_wtul1Syin&index=4) and website (coming soon!) also.
 
 🙋🏽‍♀️
-You can <a href = "https://app.appsmith.com/applications/602b8aef12ba0d29d3ec151c/pages/602b8aef12ba0d29d3ec151e">pre-register</a> for the office hours here to get an invite to your email inbox, or just sign up to get alerts from the office hours and reminders with the link to the sessions here. You can also join us on <a href="https://discord.gg/rBTTVJp">discord</a> where we send out periodic reminders for the office hours and have a dedicated support channel. 
+You can <a href = "https://app.appsmith.com/applications/602b8aef12ba0d29d3ec151c/pages/602b8aef12ba0d29d3ec151e">pre-register</a> for the office hours here to get an invite to your email inbox, or just sign up to get alerts from the office hours and reminders with the link to the sessions here. You can also join us on <a href="https://discord.gg/rBTTVJp">discord</a> where we send out periodic reminders for the office hours and have a dedicated support channel.
 
 You can find the archives of the calls below with a brief summary of each session. The video descriptions in youtube have more detailed explanations. If you have any feedback or requests regarding the office hours program, please write to akshay@appsmith.com
 
-
------------------
+---
 
 ## Archives
 
@@ -36,7 +35,7 @@ You can find the archives of the calls below with a brief summary of each sessio
 
 Somangshu and Abhishek talked about the latest releases from the past two weeks. Somangshu also demoed a few of our upcoming widgets and share designs for those that are in the works.
 
-------------------
+---
 
 <strong>Appsmith Live Demo #4, 3rd Jun 2021:  Building a CMS with the Notion API</strong>
 
@@ -46,9 +45,9 @@ Somangshu and Abhishek talked about the latest releases from the past two weeks.
 
 Akshay and Confidence show the community how we internally used the recently released Notion API to build a CMS with features not available natively in notion. This demo also shows how to work with APIs having complex responses.
 
-------------------
+---
 
-<strong>Appsmith Live Demo #3, 29th May 2021:  Stitching APIs together to automate workflows</strong>
+<strong>Appsmith Live Demo #3, 29th May 2021: Stitching APIs together to automate workflows</strong>
 
 <a href = "https://youtu.be/_8qLbyWwXeA">Video Link</a>
 
@@ -56,7 +55,7 @@ Akshay and Confidence show the community how we internally used the recently rel
 
 Confidence shows the community how we internally use APIs from multiple services to build apps that simplifies our workflow within Appsmith. Top questions from members of our community was also discussed.
 
-------------------
+---
 
 <strong>Office Hours May 13th, 2021: Product roadmap discussion</strong>
 
@@ -64,9 +63,10 @@ Confidence shows the community how we internally use APIs from multiple services
 
 #### Summary
 
-Abhishek shows the community our current product road map and explains how members can contribute to it. Abhishek also hosted an interactive section where members of the community voted for the top features they want to see on Appsmith. 
+Abhishek shows the community our current product road map and explains how members can contribute to it. Abhishek also hosted an interactive section where members of the community voted for the top features they want to see on Appsmith.
 
-Some of the most requested features are: 
+Some of the most requested features are:
+
 1. Generate form from DB schema
 2. Custom NPM packages
 3. Custom theming
@@ -74,7 +74,7 @@ Some of the most requested features are:
 
 You can vote for your favorite features [here](https://miro.com/app/board/o9J_lE-dkdM=/)
 
-------------------
+---
 
 <strong>Appsmith Live Demo #2, 6th May 2021: Building a support helpdesk using Gmail and Postgres</strong>
 
@@ -84,7 +84,7 @@ You can vote for your favorite features [here](https://miro.com/app/board/o9J_lE
 
 Nikhil shows the community how to build a ticket support dashboard to assign emails to various org members using the Gmail API and Postgres. Questions from members of our community was also discussed.
 
-------------------
+---
 
 <strong>29th April 2021: List widget, Release roadmap and more</strong>
 
@@ -94,7 +94,7 @@ Nikhil shows the community how to build a ticket support dashboard to assign ema
 
 The List widget is finally here, yay! Pawan shows the community how to use the List widget. Also, Nikhil talks about our release roadmap and Sumit talks about issues and fixes that were resolved within the past week.
 
-------------------
+---
 
 <strong>Appsmith Live Demo #1, 22nd April 2021: Build CRUD apps Google Sheets </strong>
 
@@ -104,7 +104,7 @@ The List widget is finally here, yay! Pawan shows the community how to use the L
 
 Nikhil shows the community how to build a CRM dashboard on top of Google Sheets using the new Google Sheet integration on Appsmith. Questions from members of our community was also discussed.
 
-------------------
+---
 
 <strong>15th April 2021: Bug fixes, Fusion charts demo</strong>
 
@@ -114,7 +114,7 @@ Nikhil shows the community how to build a CRM dashboard on top of Google Sheets 
 
 Nidhi from Appsmith talks about the issues that were discovered on the table widget and how they have been fixed. She also demos the new Fusion chart API that lets developers build custom charts using the chart widget.
 
-------------------
+---
 
 <strong>8th April 2021: Thanks for the 4k Github stars, Sticky property pane, Custom charts</strong>
 
@@ -124,7 +124,7 @@ Nidhi from Appsmith talks about the issues that were discovered on the table wid
 
 Abhinav shows a handful of the cool new Appsmith features, some of which are sticky property pane, custom charts, tables in rich-text-editor, text widget styling, and auto data format detection in Datepicker widget. Also, Sumit from Appsmith talks about bug fixes and community feedback.
 
-------------------
+---
 
 <strong>25th Mar 2021: Intelligent JSON substitution, Generic S3 integration, Url table column type and new datepicker formats</strong>
 
@@ -134,7 +134,7 @@ Abhinav shows a handful of the cool new Appsmith features, some of which are sti
 
 Vihar from Appsmith talks about the new Appsmith features including the intelligent JSON substitution, responsive canvas and faster local setup. Sumit demos the new S3 integration and shows how to build an app with it and Abhinav shares some improvements on the table and date picker widget.
 
-------------------
+---
 
 <strong>18th Mar 2021: Generic S3 plugin, Forkable apps, Google sheets integration</strong>
 
@@ -144,7 +144,7 @@ Vihar from Appsmith talks about the new Appsmith features including the intellig
 
 Nikhil talks about new Appsmith features. Chris Webb from the community shows off what he built using Appsmith. Nidhi from Appsmith demos how to use the new google sheets integration
 
-------------------
+---
 
 <strong>9th Mar 2021: Update user profile, Hidden tabs, Community contributions</strong>
 
@@ -154,7 +154,7 @@ Nikhil talks about new Appsmith features. Chris Webb from the community shows of
 
 Nikhil from appsmith talks about new features such as user profile updating, responsive canvas and hidden tabs. Sumit from appsmith gives shout-out to our top contributors from the past week.
 
-------------------
+---
 
 <strong>26th Feb 2021: Community feedback, Oauth 2 Integration, Google Sheets Integration, Switch Widget and Prepared Statements</strong>
 
@@ -164,7 +164,7 @@ Nikhil from appsmith talks about new features such as user profile updating, res
 
 Magnus from the community does a show and tell on how he built a tree select widget using appsmith's actions (it's super cool!). Nidhi discusses OAuth2 and Google Sheets Integration, prepared statements for Postgres and community feature requests.
 
-------------------
+---
 
 <strong>23rd Feb 2021: New datepicker, Firestore pagination and Migrations </strong>
 
@@ -174,9 +174,7 @@ Magnus from the community does a show and tell on how he built a tree select wid
 
 Abhinav from appsmith walks us through features in the upcoming release like the datepicker, list widget, modal widget, new table widget and firestore pagination. We also talk about making appsmith migrations easier and an array of bug fizes on the modal and DB querying side of things.
 
-
-------------------
-
+---
 
 <strong>16th Feb 2021: Bug fixes and enhancements for table and better error messages in DQ queries </strong>
 
@@ -186,8 +184,7 @@ Abhinav from appsmith walks us through features in the upcoming release like the
 
 Nikhil from appsmith talks about bug fixes in the table widget, enhancements to the S3 plugin, and more human readable error messages in appsmith.
 
-
-------------------
+---
 
 <strong>12th Feb 2021: Community issue debugging session </strong>
 
@@ -197,9 +194,7 @@ Nikhil from appsmith talks about bug fixes in the table widget, enhancements to 
 
 We help resolve a few issues for the users in the call, and also discuss performance updates.
 
-
-------------------
-
+---
 
 <strong>9th Feb 2021: Upcoming table widget demo, JS editor updates and bux fixes </strong>
 
@@ -208,4 +203,3 @@ We help resolve a few issues for the users in the call, and also discuss perform
 #### Summary
 
 Nikhil from appsmith demos the upcoming table widget, charts and S3 integration and discusses community issues around datasources, tree select widget feature request.
-

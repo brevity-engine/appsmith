@@ -6,7 +6,7 @@ const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Binding the multiple input Widget", function() {
+describe("Binding the multiple input Widget", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -17,7 +17,7 @@ describe("Binding the multiple input Widget", function() {
     return false;
   });
 
-  it("Cyclic depedancy error message validation", function() {
+  it("Cyclic depedancy error message validation", function () {
     cy.openPropertyPane("inputwidget");
     cy.get(widgetsPage.defaultInput).type(testdata.defaultMoustacheData);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
@@ -29,7 +29,7 @@ describe("Binding the multiple input Widget", function() {
     cy.get(commonlocators.toastmsg).contains("Cyclic dependency");
   });
 
-  it("Binding input widget1 and validating", function() {
+  it("Binding input widget1 and validating", function () {
     cy.openPropertyPane("inputwidget");
     cy.get(widgetsPage.defaultInput)
       .type(testdata.command)
@@ -46,7 +46,7 @@ describe("Binding the multiple input Widget", function() {
       .should("contain", testdata.defaultdata);
   });
 
-  it("Binding second input widget with first input widget and validating", function() {
+  it("Binding second input widget with first input widget and validating", function () {
     cy.SearchEntityandOpen("Input2");
     cy.get(widgetsPage.defaultInput).type(testdata.defaultMoustacheData);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
@@ -75,7 +75,7 @@ describe("Binding the multiple input Widget", function() {
       */
   });
 
-  it("Binding third input widget with first input widget and validating", function() {
+  it("Binding third input widget with first input widget and validating", function () {
     cy.SearchEntityandOpen("Input3");
     cy.get(widgetsPage.defaultInput).type(testdata.defaultMoustacheData);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });

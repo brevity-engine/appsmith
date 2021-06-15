@@ -33,7 +33,7 @@ export default function evaluate(
   const script = callbackData
     ? Function(scriptWithCallback)
     : Function(scriptToEvaluate);
-  const { result, triggers } = (function() {
+  const { result, triggers } = (function () {
     /**** Setting the eval context ****/
     const GLOBAL_DATA: Record<string, any> = {};
     ///// Adding callback data
@@ -47,7 +47,7 @@ export default function evaluate(
     ///// Fixing action paths and capturing their execution response
     if (dataTreeWithFunctions.actionPaths) {
       GLOBAL_DATA.triggers = [];
-      const pusher = function(this: DataTree, action: any, ...payload: any[]) {
+      const pusher = function (this: DataTree, action: any, ...payload: any[]) {
         const actionPayload = action(...payload);
         GLOBAL_DATA.triggers.push(actionPayload);
       };

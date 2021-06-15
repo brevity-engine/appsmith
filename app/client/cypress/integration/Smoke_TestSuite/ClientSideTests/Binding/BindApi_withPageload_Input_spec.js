@@ -5,12 +5,12 @@ const dsl = require("../../../../fixtures/MultipleInput.json");
 const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 
-describe("Binding the API with pageOnLoad and input Widgets", function() {
+describe("Binding the API with pageOnLoad and input Widgets", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Will load an api on load", function() {
+  it("Will load an api on load", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("PageLoadApi");
     cy.enterDatasourceAndPath(testdata.baseUrl, testdata.methods);
@@ -21,7 +21,7 @@ describe("Binding the API with pageOnLoad and input Widgets", function() {
     cy.reload();
   });
 
-  it("Input widget updated with deafult data", function() {
+  it("Input widget updated with deafult data", function () {
     cy.SearchEntityandOpen("Input1");
     cy.get(widgetsPage.defaultInput).type("3");
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
@@ -36,7 +36,7 @@ describe("Binding the API with pageOnLoad and input Widgets", function() {
       .should("contain", "3");
   });
 
-  it("Binding second input widget with API on PageLoad data and default data from input1 widget ", function() {
+  it("Binding second input widget with API on PageLoad data and default data from input1 widget ", function () {
     cy.SearchEntityandOpen("Input3");
     cy.get(widgetsPage.defaultInput).type(testdata.pageloadBinding, {
       parseSpecialCharSequences: false,
@@ -56,8 +56,6 @@ describe("Binding the API with pageOnLoad and input Widgets", function() {
       .last()
       .invoke("attr", "value")
       .should("contain", "23");
-    cy.get(publish.backToEditor)
-      .first()
-      .click();
+    cy.get(publish.backToEditor).first().click();
   });
 });

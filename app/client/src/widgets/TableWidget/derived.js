@@ -335,10 +335,7 @@ export default {
       startsWith: (a, b) => {
         try {
           return (
-            a
-              .toString()
-              .toLowerCase()
-              .indexOf(b.toString().toLowerCase()) === 0
+            a.toString().toLowerCase().indexOf(b.toString().toLowerCase()) === 0
           );
         } catch (e) {
           return false;
@@ -375,10 +372,7 @@ export default {
 
     const finalTableData = sortedTableData.filter((item) => {
       const searchFound = searchKey
-        ? Object.values(item)
-            .join(", ")
-            .toLowerCase()
-            .includes(searchKey)
+        ? Object.values(item).join(", ").toLowerCase().includes(searchKey)
         : true;
       if (!searchFound) return false;
       if (!props.filters || props.filters.length === 0) return true;

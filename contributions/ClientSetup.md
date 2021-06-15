@@ -9,16 +9,18 @@ On your development machine, please ensure that:
 1. You have `docker` installed in your system. If not, please visit: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 1. You have `mkcert` installed. Please visit: [https://github.com/FiloSottile/mkcert#installation](https://github.com/FiloSottile/mkcert#installation) for details. For `mkcert` to work with Firefox you may require the `nss` utility to be installed. Details are in the link above.
 
-  Note:
-  - On Linux you can easily install `mkcert` using the following command
-  ```
-  curl -s https://api.github.com/repos/FiloSottile/mkcert/releases/latest \
-  | grep "browser_download_url.*linux-amd64" \
-  | cut -d : -f 2,3 | tr -d \" \
-  | wget -i - -O mkcert
-  chmod +x  mkcert
-  sudo mv mkcert /usr/local/bin
-  ```
+Note:
+
+- On Linux you can easily install `mkcert` using the following command
+
+```
+curl -s https://api.github.com/repos/FiloSottile/mkcert/releases/latest \
+| grep "browser_download_url.*linux-amd64" \
+| cut -d : -f 2,3 | tr -d \" \
+| wget -i - -O mkcert
+chmod +x  mkcert
+sudo mv mkcert /usr/local/bin
+```
 
 1. You have `envsubst` installed. use `brew install gettext` on MacOS. Linux machines usually have this installed.
 1. You have cloned the repo in your local machine.
@@ -65,19 +67,19 @@ On your development machine, please ensure that:
 
 1. Run `yarn install`
 
-    Note:
+   Note:
 
-    - On Ubuntu Linux platform, please run the following cmd before step 2 below:
+   - On Ubuntu Linux platform, please run the following cmd before step 2 below:
 
-        ```
-        echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-        ```
+     ```
+     echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+     ```
 
 2. Run `yarn start`
 
-    🎉 Your Appsmith client is now running on https://dev.appsmith.com.
+   🎉 Your Appsmith client is now running on https://dev.appsmith.com.
 
-    This URL must be opened with https and not have the port 3000 in it
+   This URL must be opened with https and not have the port 3000 in it
 
 #### Note:
 
@@ -96,16 +98,16 @@ node versions to be used in different projects. Check below for installation and
 
 - You can pass the server url as an arg to the `start-https.sh` script.
 
-    ```bash
-    ./start-https.sh https://release.app.appsmith.com
-    ```
+  ```bash
+  ./start-https.sh https://release.app.appsmith.com
+  ```
 
 - Run
 
-    ```
-    yarn
-    yarn start
-    ```
+  ```
+  yarn
+  yarn start
+  ```
 
 ### Troubleshooting
 

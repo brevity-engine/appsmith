@@ -127,9 +127,8 @@ export function* checkAndGetPluginFormConfigsSaga(pluginId: string) {
     const plugin: Plugin = yield select(getPlugin, pluginId);
     const formConfig = yield select(getPluginForm, pluginId);
     if (!formConfig) {
-      const formConfigResponse: GenericApiResponse<PluginFormPayload> = yield PluginApi.fetchFormConfig(
-        pluginId,
-      );
+      const formConfigResponse: GenericApiResponse<PluginFormPayload> =
+        yield PluginApi.fetchFormConfig(pluginId);
       yield validateResponse(formConfigResponse);
       if (!formConfigResponse.data.setting) {
         formConfigResponse.data.setting = defaultActionSettings[plugin.type];

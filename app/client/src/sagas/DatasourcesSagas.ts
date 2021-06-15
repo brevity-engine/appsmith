@@ -80,9 +80,8 @@ import LOG_TYPE from "entities/AppsmithConsole/logtype";
 function* fetchDatasourcesSaga() {
   try {
     const orgId = yield select(getCurrentOrgId);
-    const response: GenericApiResponse<Datasource[]> = yield DatasourcesApi.fetchDatasources(
-      orgId,
-    );
+    const response: GenericApiResponse<Datasource[]> =
+      yield DatasourcesApi.fetchDatasources(orgId);
     const isValidResponse = yield validateResponse(response);
     if (isValidResponse) {
       yield put({
@@ -106,9 +105,8 @@ export function* deleteDatasourceSaga(
 ) {
   try {
     const id = actionPayload.payload.id;
-    const response: GenericApiResponse<Datasource> = yield DatasourcesApi.deleteDatasource(
-      id,
-    );
+    const response: GenericApiResponse<Datasource> =
+      yield DatasourcesApi.deleteDatasource(id);
 
     const isValidResponse = yield validateResponse(response);
 
@@ -181,10 +179,11 @@ function* updateDatasourceSaga(
   try {
     const datasourcePayload = _.omit(actionPayload.payload, "name");
 
-    const response: GenericApiResponse<Datasource> = yield DatasourcesApi.updateDatasource(
-      datasourcePayload,
-      datasourcePayload.id,
-    );
+    const response: GenericApiResponse<Datasource> =
+      yield DatasourcesApi.updateDatasource(
+        datasourcePayload,
+        datasourcePayload.id,
+      );
     const isValidResponse = yield validateResponse(response);
     if (isValidResponse) {
       AnalyticsUtil.logEvent("SAVE_DATA_SOURCE", {
@@ -323,12 +322,13 @@ function* saveDatasourceNameSaga(
   actionPayload: ReduxAction<{ id: string; name: string }>,
 ) {
   try {
-    const response: GenericApiResponse<Datasource> = yield DatasourcesApi.updateDatasource(
-      {
-        name: actionPayload.payload.name,
-      },
-      actionPayload.payload.id,
-    );
+    const response: GenericApiResponse<Datasource> =
+      yield DatasourcesApi.updateDatasource(
+        {
+          name: actionPayload.payload.name,
+        },
+        actionPayload.payload.id,
+      );
 
     const isValidResponse = yield validateResponse(response);
     if (isValidResponse) {
@@ -369,12 +369,11 @@ function* testDatasourceSaga(actionPayload: ReduxAction<Datasource>) {
   }
 
   try {
-    const response: GenericApiResponse<Datasource> = yield DatasourcesApi.testDatasource(
-      {
+    const response: GenericApiResponse<Datasource> =
+      yield DatasourcesApi.testDatasource({
         ...payload,
         organizationId,
-      },
-    );
+      });
     const isValidResponse = yield validateResponse(response);
     let messages: Array<string> = [];
     if (isValidResponse) {
@@ -469,12 +468,11 @@ function* createDatasourceFromFormSaga(
 
     const payload = merge(initialValues, actionPayload.payload);
 
-    const response: GenericApiResponse<Datasource> = yield DatasourcesApi.createDatasource(
-      {
+    const response: GenericApiResponse<Datasource> =
+      yield DatasourcesApi.createDatasource({
         ...payload,
         organizationId,
-      },
-    );
+      });
     const isValidResponse = yield validateResponse(response);
     if (isValidResponse) {
       yield put({
@@ -636,9 +634,8 @@ function* updateDatasourceSuccessSaga(action: UpdateDatasourceSuccessAction) {
 function* fetchDatasourceStructureSaga(action: ReduxAction<{ id: string }>) {
   const datasource = yield select(getDatasource, action.payload.id);
   try {
-    const response: GenericApiResponse<any> = yield DatasourcesApi.fetchDatasourceStructure(
-      action.payload.id,
-    );
+    const response: GenericApiResponse<any> =
+      yield DatasourcesApi.fetchDatasourceStructure(action.payload.id);
     const isValidResponse = yield validateResponse(response, false);
     if (isValidResponse) {
       yield put({
@@ -691,10 +688,8 @@ function* fetchDatasourceStructureSaga(action: ReduxAction<{ id: string }>) {
 function* refreshDatasourceStructure(action: ReduxAction<{ id: string }>) {
   const datasource = yield select(getDatasource, action.payload.id);
   try {
-    const response: GenericApiResponse<any> = yield DatasourcesApi.fetchDatasourceStructure(
-      action.payload.id,
-      true,
-    );
+    const response: GenericApiResponse<any> =
+      yield DatasourcesApi.fetchDatasourceStructure(action.payload.id, true);
     const isValidResponse = yield validateResponse(response);
     if (isValidResponse) {
       yield put({

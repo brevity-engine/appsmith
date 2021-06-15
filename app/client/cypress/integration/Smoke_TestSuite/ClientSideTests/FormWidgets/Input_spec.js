@@ -3,7 +3,7 @@ const dsl = require("../../../../fixtures/newFormDsl.json");
 const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 
-describe("Input Widget Functionality", function() {
+describe("Input Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -28,7 +28,7 @@ describe("Input Widget Functionality", function() {
   //   cy.reload();
   // });
 
-  it("Input Widget Functionality", function() {
+  it("Input Widget Functionality", function () {
     cy.openPropertyPane("inputwidget");
     /**
      * @param{Text} Random Text
@@ -42,9 +42,7 @@ describe("Input Widget Functionality", function() {
       .children()
       .contains("Text")
       .click();
-    cy.get(widgetsPage.innertext)
-      .click({ force: true })
-      .type(this.data.para);
+    cy.get(widgetsPage.innertext).click({ force: true }).type(this.data.para);
     cy.get(widgetsPage.inputWidget + " " + "input")
       .invoke("attr", "value")
       .should("contain", this.data.para);
@@ -64,9 +62,7 @@ describe("Input Widget Functionality", function() {
     cy.get(widgetsPage.innertext)
       .invoke("attr", "placeholder")
       .should("contain", this.data.placeholder);
-    cy.get(widgetsPage.Regex)
-      .click()
-      .type(this.data.regex);
+    cy.get(widgetsPage.Regex).click().type(this.data.regex);
     /**
      * @param{Show Alert} Css for InputChange
      */
@@ -76,7 +72,7 @@ describe("Input Widget Functionality", function() {
     );
     cy.PublishtheApp();
   });
-  it("Input Widget Functionality To Validate Default Text and Placeholder", function() {
+  it("Input Widget Functionality To Validate Default Text and Placeholder", function () {
     cy.get(publish.inputWidget + " " + "input")
       .invoke("attr", "value")
       .should("contain", this.data.defaultdata);
@@ -85,28 +81,28 @@ describe("Input Widget Functionality", function() {
       .should("contain", this.data.placeholder);
     cy.get(publish.backToEditor).click({ force: true });
   });
-  it("Input Widget Functionality To Check Disabled Widget", function() {
+  it("Input Widget Functionality To Check Disabled Widget", function () {
     cy.openPropertyPane("inputwidget");
     cy.togglebar(commonlocators.Disablejs + " " + "input");
     cy.PublishtheApp();
     cy.get(publish.inputWidget + " " + "input").should("be.disabled");
     cy.get(publish.backToEditor).click({ force: true });
   });
-  it("Input Widget Functionality To Check Enabled Widget", function() {
+  it("Input Widget Functionality To Check Enabled Widget", function () {
     cy.openPropertyPane("inputwidget");
     cy.togglebarDisable(commonlocators.Disablejs + " " + "input");
     cy.PublishtheApp();
     cy.get(publish.inputWidget + " " + "input").should("be.enabled");
     cy.get(publish.backToEditor).click({ force: true });
   });
-  it("Input Functionality To Unchecked Visible Widget", function() {
+  it("Input Functionality To Unchecked Visible Widget", function () {
     cy.openPropertyPane("inputwidget");
     cy.togglebarDisable(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publish.inputWidget + " " + "input").should("not.exist");
     cy.get(publish.backToEditor).click({ force: true });
   });
-  it("Input Functionality To Check Visible Widget", function() {
+  it("Input Functionality To Check Visible Widget", function () {
     cy.openPropertyPane("inputwidget");
     cy.togglebar(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
@@ -114,29 +110,19 @@ describe("Input Widget Functionality", function() {
     cy.get(publish.backToEditor).click({ force: true });
   });
 
-  it("Input Functionality To check number input type with custom regex", function() {
+  it("Input Functionality To check number input type with custom regex", function () {
     cy.openPropertyPane("inputwidget");
-    cy.get(commonlocators.dataType)
-      .last()
-      .click();
+    cy.get(commonlocators.dataType).last().click();
     /*cy.get(
       `${commonlocators.dataType} .single-select:contains("Number")`,
     ).click();*/
-    cy.get(".t--dropdown-option")
-      .children()
-      .contains("Number")
-      .click();
+    cy.get(".t--dropdown-option").children().contains("Number").click();
     cy.testJsontext("regex", "^s*(?=.*[1-9])d*(?:.d{1,2})?s*$");
-    cy.get(widgetsPage.innertext)
-      .click()
-      .clear()
-      .type("1.255");
+    cy.get(widgetsPage.innertext).click().clear().type("1.255");
     cy.get(".bp3-popover-content").should(($x) => {
       expect($x).contain("Invalid input");
     });
-    cy.get(widgetsPage.innertext)
-      .click()
-      .clear();
+    cy.get(widgetsPage.innertext).click().clear();
   });
 });
 afterEach(() => {

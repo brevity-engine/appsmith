@@ -2,11 +2,11 @@
 
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Leave organization test spec", function() {
+describe("Leave organization test spec", function () {
   let newOrgId;
   let newOrganizationName;
 
-  it("leave organization menu is visible validation", function() {
+  it("leave organization menu is visible validation", function () {
     cy.visit("/applications");
     cy.createOrg();
     cy.wait("@createOrg").then((interception) => {
@@ -18,7 +18,7 @@ describe("Leave organization test spec", function() {
     });
   });
 
-  it("Only admin user can not leave organization validation", function() {
+  it("Only admin user can not leave organization validation", function () {
     cy.visit("/applications");
     cy.createOrg();
     cy.wait("@createOrg").then((interception) => {
@@ -35,7 +35,7 @@ describe("Leave organization test spec", function() {
     });
   });
 
-  it("Non admin users can only access leave organization popup menu validation", function() {
+  it("Non admin users can only access leave organization popup menu validation", function () {
     cy.visit("/applications");
     cy.createOrg();
     cy.wait("@createOrg").then((interception) => {
@@ -55,9 +55,7 @@ describe("Leave organization test spec", function() {
         .scrollIntoView()
         .should("be.visible")
         .within(() => {
-          cy.get(homePage.orgNamePopover)
-            .first()
-            .click();
+          cy.get(homePage.orgNamePopover).first().click();
         });
       cy.get(homePage.orgNamePopoverContent)
         .find("a")

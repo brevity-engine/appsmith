@@ -49,16 +49,13 @@ export const generateDataTreeWidget = (
   Object.keys(derivedProps).forEach((propertyName) => {
     blockedDerivedProps[propertyName] = true;
   });
-  const {
-    bindingPaths,
-    triggerPaths,
-    validationPaths,
-  } = getAllPathsFromPropertyConfig(widget, propertyPaneConfigs, {
-    ...derivedPropertyMap,
-    ...defaultMetaProps,
-    ...unInitializedDefaultProps,
-    ..._.keyBy(dynamicBindingPathList, "key"),
-  });
+  const { bindingPaths, triggerPaths, validationPaths } =
+    getAllPathsFromPropertyConfig(widget, propertyPaneConfigs, {
+      ...derivedPropertyMap,
+      ...defaultMetaProps,
+      ...unInitializedDefaultProps,
+      ..._.keyBy(dynamicBindingPathList, "key"),
+    });
   return {
     ...widget,
     ...defaultMetaProps,

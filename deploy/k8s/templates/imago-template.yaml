@@ -37,20 +37,20 @@ rules:
       - ""
       - apps
     resources:
-    - pods
-    - replicasets
-    - statefulsets
+      - pods
+      - replicasets
+      - statefulsets
     verbs:
-    - list
+      - list
   - apiGroups:
       - ""
       - batch
     resources:
-    - cronjobs
+      - cronjobs
     verbs:
-    - get
-    - list
-    - update
+      - get
+      - list
+      - update
   - apiGroups:
       - ""
       - apps

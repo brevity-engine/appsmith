@@ -2,8 +2,8 @@ const testdata = require("../../../../fixtures/testdata.json");
 const datasource = require("../../../../locators/DatasourcesEditor.json");
 const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 
-describe("Datasource form related tests", function() {
-  it("Create an API with app url and save as Datasource", function() {
+describe("Datasource form related tests", function () {
+  it("Create an API with app url and save as Datasource", function () {
     cy.NavigateToAPI_Panel();
     cy.CreateAPI("TestOAuth");
     cy.get(apiwidget.resourceUrl)
@@ -13,7 +13,7 @@ describe("Datasource form related tests", function() {
     cy.get(".t--store-as-datasource").click();
   });
 
-  it("Add Oauth details to datasource and save", function() {
+  it("Add Oauth details to datasource and save", function () {
     cy.get(".t--save-datasource").should("not.be.disabled");
     cy.addOauthAuthDetails(
       testdata.accessTokenUrl,
@@ -23,7 +23,7 @@ describe("Datasource form related tests", function() {
     );
   });
 
-  it("validate save and Authorise", function() {
+  it("validate save and Authorise", function () {
     cy.get(datasource.saveAndAuthorize).click();
     cy.contains("#login-submit", "Login");
     cy.url().should("include", "oauth.mocklab.io/oauth/authorize");

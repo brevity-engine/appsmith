@@ -6,7 +6,7 @@ const pages = require("../../../../locators/Pages.json");
 const publishPage = require("../../../../locators/publishWidgetspage.json");
 const modalWidgetPage = require("../../../../locators/ModalWidget.json");
 
-describe("Button Widget Functionality", function() {
+describe("Button Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -15,7 +15,7 @@ describe("Button Widget Functionality", function() {
     cy.openPropertyPane("buttonwidget");
   });
 
-  it("Button-Name validation", function() {
+  it("Button-Name validation", function () {
     //changing the Button Name
     cy.widgetText(
       this.data.ButtonName,
@@ -43,7 +43,7 @@ describe("Button Widget Functionality", function() {
     );
   });
 
-  it("Button-Disable Validation", function() {
+  it("Button-Disable Validation", function () {
     //Check the disableed checkbox and Validate
     cy.CheckWidgetProperties(commonlocators.disableCheckbox);
     cy.validateDisableWidget(
@@ -57,7 +57,7 @@ describe("Button Widget Functionality", function() {
     );
   });
 
-  it("Button-Enable Validation", function() {
+  it("Button-Enable Validation", function () {
     //Uncheck the disabled checkbox and validate
     cy.UncheckWidgetProperties(commonlocators.disableCheckbox);
     cy.validateEnableWidget(
@@ -71,21 +71,21 @@ describe("Button Widget Functionality", function() {
     );
   });
 
-  it("Button-Unckeck Visible field Validation", function() {
+  it("Button-Unckeck Visible field Validation", function () {
     //Uncheck the disabled checkbox and validate
     cy.UncheckWidgetProperties(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publishPage.buttonWidget).should("not.exist");
   });
 
-  it("Button-Check Visible field Validation", function() {
+  it("Button-Check Visible field Validation", function () {
     //Check the disableed checkbox and Validate
     cy.CheckWidgetProperties(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publishPage.buttonWidget).should("be.visible");
   });
 
-  it("Button-AlertModal Validation", function() {
+  it("Button-AlertModal Validation", function () {
     //creating the Alert Modal and verify Modal name
     cy.createModal("Alert Modal", this.data.AlertModalName);
     cy.PublishtheApp();
@@ -96,7 +96,7 @@ describe("Button Widget Functionality", function() {
     );
   });
 
-  it("Button-FormModal Validation", function() {
+  it("Button-FormModal Validation", function () {
     //creating the Form Modal and verify Modal name
     cy.updateModal("Form Modal", this.data.FormModalName);
     cy.PublishtheApp();

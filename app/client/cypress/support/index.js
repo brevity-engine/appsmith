@@ -30,7 +30,7 @@ Cypress.on("fail", (error, runnable) => {
   throw error; // throw error to have test still fail
 });
 
-before(function() {
+before(function () {
   cy.startServerAndRoutes();
   // Clear indexedDB
   cy.window().then((window) => {
@@ -52,17 +52,17 @@ before(function() {
     localStorage.setItem("AppName", appId);
   });
 
-  cy.fixture("example").then(function(data) {
+  cy.fixture("example").then(function (data) {
     this.data = data;
   });
 });
 
-beforeEach(function() {
+beforeEach(function () {
   Cypress.Cookies.preserveOnce("SESSION", "remember_token");
   cy.startServerAndRoutes();
 });
 
-after(function() {
+after(function () {
   //-- Deleting the application by Api---//
   cy.DeleteAppByApi();
   //-- LogOut Application---//

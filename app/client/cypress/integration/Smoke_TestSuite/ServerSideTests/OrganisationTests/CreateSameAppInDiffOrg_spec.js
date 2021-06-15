@@ -1,11 +1,11 @@
 /// <reference types="Cypress" />
 
-describe("Create app same name in different org", function() {
+describe("Create app same name in different org", function () {
   let orgid;
   let appid;
   let newOrganizationName;
 
-  it("create app within a new org", function() {
+  it("create app within a new org", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid = uid;
@@ -24,7 +24,7 @@ describe("Create app same name in different org", function() {
     });
   });
 
-  it("create app with same name in a different org", function() {
+  it("create app with same name in a different org", function () {
     cy.LoginFromAPI(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.visit("/applications");
     cy.wait("@applications").should(

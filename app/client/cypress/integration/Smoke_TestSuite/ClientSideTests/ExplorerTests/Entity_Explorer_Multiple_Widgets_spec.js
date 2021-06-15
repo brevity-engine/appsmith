@@ -8,36 +8,28 @@ const apiwidget = require("../../../../locators/apiWidgetslocator.json");
 const explorer = require("../../../../locators/explorerlocators.json");
 const pageid = "MyPage";
 
-describe("Entity explorer tests related to widgets and validation", function() {
-  it("Add a widget to default page and verify the properties", function() {
+describe("Entity explorer tests related to widgets and validation", function () {
+  it("Add a widget to default page and verify the properties", function () {
     cy.addDsl(dsl);
     cy.SearchEntityandOpen("Text1");
-    cy.get(explorer.collapse)
-      .last()
-      .click({ force: true });
-    cy.get(explorer.property)
-      .last()
-      .click({ force: true });
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(explorer.collapse).last().click({ force: true });
+    cy.get(explorer.property).last().click({ force: true });
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(2);
       expect($lis.eq(0)).to.contain("{{Text1.isVisible}}");
       expect($lis.eq(1)).to.contain("{{Text1.text}}");
     });
   });
 
-  it("Create another page and add another widget and verify properties", function() {
+  it("Create another page and add another widget and verify properties", function () {
     cy.Createpage(pageid);
     cy.addDsl(tdsl);
     cy.openPropertyPane("tablewidget");
     cy.widgetText("Table1", widgetsPage.tableWidget, commonlocators.tableInner);
     cy.GlobalSearchEntity("Table1");
-    cy.get(explorer.collapse)
-      .last()
-      .click({ force: true });
-    cy.get(explorer.property)
-      .last()
-      .click({ force: true });
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(explorer.collapse).last().click({ force: true });
+    cy.get(explorer.property).last().click({ force: true });
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(8);
       expect($lis.eq(0)).to.contain("{{Table1.selectedRow}}");
       expect($lis.eq(1)).to.contain("{{Table1.selectedRows}}");
@@ -50,15 +42,11 @@ describe("Entity explorer tests related to widgets and validation", function() {
     });
   });
 
-  it("Toggle between widgets in different pages using search functionality", function() {
+  it("Toggle between widgets in different pages using search functionality", function () {
     cy.SearchEntityandOpen("Text1");
-    cy.get(explorer.collapse)
-      .last()
-      .click({ force: true });
-    cy.get(explorer.property)
-      .last()
-      .click({ force: true });
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(explorer.collapse).last().click({ force: true });
+    cy.get(explorer.property).last().click({ force: true });
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(2);
       expect($lis.eq(0)).to.contain("{{Text1.isVisible}}");
       expect($lis.eq(1)).to.contain("{{Text1.text}}");

@@ -1,18 +1,16 @@
 const commonlocators = require("../../../../locators/commonlocators.json");
 const dsl = require("../../../../fixtures/TextTabledsl.json");
 
-describe("Table Widget property pane feature validation", function() {
+describe("Table Widget property pane feature validation", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Property pane initial position same untill it is dragged", function() {
+  it("Property pane initial position same untill it is dragged", function () {
     cy.openPropertyPane("tablewidget");
     cy.get("#popper-draghandler").then((oldPorpPane) => {
       const oldPropPanePosition = oldPorpPane[0].getBoundingClientRect();
-      cy.get(commonlocators.collapsesection)
-        .first()
-        .click();
+      cy.get(commonlocators.collapsesection).first().click();
       cy.get(commonlocators.editPropCrossButton).click({ force: true });
       cy.openPropertyPane("tablewidget");
       cy.get("#popper-draghandler").then((newPropPane) => {

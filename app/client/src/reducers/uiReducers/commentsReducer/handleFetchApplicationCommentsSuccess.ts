@@ -22,9 +22,8 @@ const handleFetchApplicationCommentsSuccess = (
     {},
   );
 
-  state.applicationCommentThreadsByRef[
-    applicationId
-  ] = applicationCommentIdsByRefId;
+  state.applicationCommentThreadsByRef[applicationId] =
+    applicationCommentIdsByRefId;
 
   state.commentThreadsMap = {
     ...state.commentThreadsMap,

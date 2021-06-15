@@ -103,9 +103,9 @@ export function* executeWidgetBlueprintOperations(
             (childId: string) => widgets[childId],
           ) as WidgetProps[];
         }
-        const updatePropertyPayloads:
-          | UpdatePropertyArgs[]
-          | undefined = (operation.fn as BlueprintOperationModifyPropsFn)(
+        const updatePropertyPayloads: UpdatePropertyArgs[] | undefined = (
+          operation.fn as BlueprintOperationModifyPropsFn
+        )(
           widget as WidgetProps & { children?: WidgetProps[] },
           widgets,
           get(widgets, widget.parentId || "", undefined),
@@ -149,15 +149,9 @@ export function* executeWidgetBlueprintChildOperations(
     ),
   };
 
-  const {
-    message,
-    widgets,
-  } = (operation.fn as BlueprintOperationChildOperationsFn)(
-    canvasWidgets,
-    widgetId,
-    parentId,
-    widgetPropertyMaps,
-  );
+  const { message, widgets } = (
+    operation.fn as BlueprintOperationChildOperationsFn
+  )(canvasWidgets, widgetId, parentId, widgetPropertyMaps);
 
   // If something odd happens show the message related to the odd scenario
   if (message) {

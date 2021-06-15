@@ -3,7 +3,7 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 const dsl = require("../../../../fixtures/TextTabledsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Text-Table Binding Functionality", function() {
+describe("Text-Table Binding Functionality", function () {
   Cypress.on("uncaught:exception", (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test
@@ -13,7 +13,7 @@ describe("Text-Table Binding Functionality", function() {
   before(() => {
     cy.addDsl(dsl);
   });
-  it("Text-Table Binding Functionality For Id", function() {
+  it("Text-Table Binding Functionality For Id", function () {
     cy.openPropertyPane("tablewidget");
     /**
      * @param(Index)  Provide index value to select the row.
@@ -38,10 +38,8 @@ describe("Text-Table Binding Functionality", function() {
       });
     });
   });
-  it("Text-Table Binding Functionality For Email", function() {
-    cy.get(publish.backToEditor)
-      .first()
-      .click();
+  it("Text-Table Binding Functionality For Email", function () {
+    cy.get(publish.backToEditor).first().click();
     cy.isSelectRow(2);
     cy.openPropertyPane("textwidget");
     cy.testJsontext("text", "{{Table1.selectedRow.email}}");
@@ -62,10 +60,8 @@ describe("Text-Table Binding Functionality", function() {
       });
     });
   });
-  it("Text-Table Binding Functionality For Total Length", function() {
-    cy.get(publish.backToEditor)
-      .first()
-      .click();
+  it("Text-Table Binding Functionality For Total Length", function () {
+    cy.get(publish.backToEditor).first().click();
     cy.openPropertyPane("textwidget");
     cy.testJsontext("text", "{{Table1.pageSize}}");
     cy.get(commonlocators.TableRow)
@@ -84,10 +80,8 @@ describe("Text-Table Binding Functionality", function() {
           });
       });
   });
-  it("Table Widget Functionality To Verify Default Row Selection is working", function() {
-    cy.get(publish.backToEditor)
-      .first()
-      .click();
+  it("Table Widget Functionality To Verify Default Row Selection is working", function () {
+    cy.get(publish.backToEditor).first().click();
     cy.openPropertyPane("tablewidget");
     cy.testJsontext("defaultselectedrow", "2");
     cy.wait("@updateLayout");
@@ -105,10 +99,8 @@ describe("Text-Table Binding Functionality", function() {
       cy.get(commonlocators.TextInside).should("have.text", tabValueP);
     });
   });
-  it("Text-Table Binding Functionality For Username", function() {
-    cy.get(publish.backToEditor)
-      .first()
-      .click();
+  it("Text-Table Binding Functionality For Username", function () {
+    cy.get(publish.backToEditor).first().click();
     /**
      * @param(Index)  Provide index value to select the row.
      */

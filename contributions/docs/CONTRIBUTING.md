@@ -1,6 +1,6 @@
 # Contributing to Appsmith Documentation
 
-Thank you for your interest in Appsmith and taking the time out to contribute to our documentation. 🙌 
+Thank you for your interest in Appsmith and taking the time out to contribute to our documentation. 🙌
 Feel free to propose changes to this document in a pull request.
 
 Appsmith uses Gitbook for [documentation](https://docs.appsmith.com). The docs are backed by the [appsmith-docs](https://github.com/appsmithorg/appsmith-docs) repository

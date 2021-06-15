@@ -71,7 +71,7 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "IN",
-            "value":  ["GET_DOCUMENT", "GET_COLLECTION", "DELETE_DOCUMENT"]
+            "value": ["GET_DOCUMENT", "GET_COLLECTION", "DELETE_DOCUMENT"]
           }
         },
         {
@@ -90,7 +90,14 @@
           "hidden": {
             "path": "actionConfiguration.pluginSpecifiedTemplates[0].value",
             "comparison": "IN",
-            "value":  ["GET_DOCUMENT", "GET_COLLECTION", "DELETE_DOCUMENT", "CREATE_DOCUMENT", "ADD_TO_COLLECTION", "SET_DOCUMENT"]
+            "value": [
+              "GET_DOCUMENT",
+              "GET_COLLECTION",
+              "DELETE_DOCUMENT",
+              "CREATE_DOCUMENT",
+              "ADD_TO_COLLECTION",
+              "SET_DOCUMENT"
+            ]
           }
         },
         {

@@ -6,12 +6,12 @@ const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Binding the table widget and input Widget", function() {
+describe("Binding the table widget and input Widget", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Input widget test with default value from table widget", function() {
+  it("Input widget test with default value from table widget", function () {
     cy.SearchEntityandOpen("Input1");
     cy.get(widgetsPage.defaultInput).type(testdata.defaultInputWidget);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
@@ -22,7 +22,7 @@ describe("Binding the table widget and input Widget", function() {
     );
   });
 
-  it("Input widget test with default value from table widget", function() {
+  it("Input widget test with default value from table widget", function () {
     cy.SearchEntityandOpen("Input2");
     cy.get(widgetsPage.defaultInput).type(testdata.defaultRowIndexBinding);
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
@@ -33,11 +33,9 @@ describe("Binding the table widget and input Widget", function() {
     );
   });
 
-  it("validation of data displayed in input widgets based on selected row", function() {
+  it("validation of data displayed in input widgets based on selected row", function () {
     cy.SearchEntityandOpen("Table1");
-    cy.get(commonlocators.deflautSelectedRow)
-      .last()
-      .type("2", { force: true });
+    cy.get(commonlocators.deflautSelectedRow).last().type("2", { force: true });
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
     cy.readTabledataPublish("2", "0").then((tabData) => {
       const tabValue = tabData;

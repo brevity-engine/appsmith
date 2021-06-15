@@ -5,12 +5,12 @@ const dsl = require("../../../../fixtures/videoWidgetDsl.json");
 const pages = require("../../../../locators/Pages.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Video Widget Functionality", function() {
+describe("Video Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Video Widget play functionality validation", function() {
+  it("Video Widget play functionality validation", function () {
     cy.openPropertyPane("videowidget");
     cy.widgetText("Video1", widgetsPage.videoWidget, commonlocators.videoInner);
     cy.get(commonlocators.onPlay).click();
@@ -29,7 +29,7 @@ describe("Video Widget Functionality", function() {
     */
   });
 
-  it("Video widget pause functionality validation", function() {
+  it("Video widget pause functionality validation", function () {
     cy.get(commonlocators.onPause).click();
     cy.selectShowMsg();
     cy.addSuccessMessage("Pause success");
@@ -46,11 +46,9 @@ describe("Video Widget Functionality", function() {
     */
   });
 
-  it("Update video url and check play and pause functionality validation", function() {
+  it("Update video url and check play and pause functionality validation", function () {
     cy.testCodeMirror(testdata.videoUrl);
-    cy.get(".CodeMirror textarea")
-      .first()
-      .blur();
+    cy.get(".CodeMirror textarea").first().blur();
     cy.get(widgetsPage.autoPlay).click();
     cy.wait("@updateLayout").should(
       "have.nested.property",

@@ -47,9 +47,8 @@ export function* fetchProviderTemplatesSaga(
   try {
     const request: FetchProviderTemplatesRequest = { providerId };
 
-    const response: FetchProviderTemplateResponse = yield ProvidersApi.fetchProviderTemplates(
-      request,
-    );
+    const response: FetchProviderTemplateResponse =
+      yield ProvidersApi.fetchProviderTemplates(request);
 
     const isValidResponse = yield validateResponse(response);
 
@@ -78,9 +77,8 @@ export function* addApiToPageSaga(
     organizationId,
   };
   try {
-    const response: FetchProviderTemplateResponse = yield ProvidersApi.addApiToPage(
-      request,
-    );
+    const response: FetchProviderTemplateResponse =
+      yield ProvidersApi.addApiToPage(request);
 
     const isValidResponse = yield validateResponse(response);
 
@@ -176,9 +174,8 @@ export function* fetchProviderDetailsByProviderIdSaga(
   try {
     const request: FetchProviderDetailsByProviderIdRequest = { providerId };
 
-    const response: FetchProviderDetailsResponse = yield ProvidersApi.fetchProviderDetailsByProviderId(
-      request,
-    );
+    const response: FetchProviderDetailsResponse =
+      yield ProvidersApi.fetchProviderDetailsByProviderId(request);
 
     const isValidResponse = yield validateResponse(response);
 

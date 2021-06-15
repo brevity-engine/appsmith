@@ -52,11 +52,10 @@ export const getBindingPathsOfAction = (
                 dynamicFields.includes(schemaField.controlType)
               ) {
                 const arrayConfigPath = `${configPath}[${i}].${schemaField.key}`;
-                bindingPaths[
-                  arrayConfigPath
-                ] = getCorrectEvaluationSubstitutionType(
-                  formConfig.evaluationSubstitutionType,
-                );
+                bindingPaths[arrayConfigPath] =
+                  getCorrectEvaluationSubstitutionType(
+                    formConfig.evaluationSubstitutionType,
+                  );
               }
             });
           }

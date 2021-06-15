@@ -3,8 +3,8 @@ const HelpLocators = require("../../../../locators/HelpLocators.json");
 let pageid;
 let appId;
 
-describe("Login from UI and check the functionality", function() {
-  it("Login/create page/delete page/delete app from UI", function() {
+describe("Login from UI and check the functionality", function () {
+  it("Login/create page/delete page/delete app from UI", function () {
     const appname = localStorage.getItem("AppName");
     cy.LogintoApp(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.SearchApp(appname);
@@ -22,7 +22,7 @@ describe("Login from UI and check the functionality", function() {
     cy.get("@deleteApplication").should("have.property", "status", 200);
   });
 
-  it("Login/Logout click Appsmith logo should route to login page", function() {
+  it("Login/Logout click Appsmith logo should route to login page", function () {
     cy.LogintoApp(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.get(homePage.profileMenu).click();
     cy.get(homePage.signOutIcon).click();
@@ -34,23 +34,19 @@ describe("Login from UI and check the functionality", function() {
     cy.url().should("include", "user/login");
   });
 
-  it("Theme change test and validation", function() {
+  it("Theme change test and validation", function () {
     cy.LogintoApp(Cypress.env("USERNAME"), Cypress.env("PASSWORD"));
     cy.get(homePage.profileMenu).click();
     cy.get(homePage.themeText).should("have.attr", "value", "true");
-    cy.get("span")
-      .contains("Light")
-      .click({ force: true });
+    cy.get("span").contains("Light").click({ force: true });
     cy.get(homePage.profileMenu).click();
     cy.get(homePage.themeText).should("have.attr", "value", "false");
-    cy.get("span")
-      .contains("Dark")
-      .click({ force: true });
+    cy.get("span").contains("Dark").click({ force: true });
     cy.get(homePage.profileMenu).click();
     cy.get(homePage.themeText).should("have.attr", "value", "true");
   });
 
-  it("Icon of fab button of help modal should change on open and close", function() {
+  it("Icon of fab button of help modal should change on open and close", function () {
     cy.get(HelpLocators.HelpButton).click();
     cy.get(`${HelpLocators.HelpButton} .bp3-icon-cross`).should(
       "have.length",

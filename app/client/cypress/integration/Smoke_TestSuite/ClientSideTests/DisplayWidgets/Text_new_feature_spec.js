@@ -4,7 +4,7 @@ const publishPage = require("../../../../locators/publishWidgetspage.json");
 const dsl = require("../../../../fixtures/textDsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Text Widget color/font/alignment Functionality", function() {
+describe("Text Widget color/font/alignment Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -13,7 +13,7 @@ describe("Text Widget color/font/alignment Functionality", function() {
     cy.openPropertyPane("textwidget");
   });
 
-  it("Text-TextStyle Heading, Text Name Validation", function() {
+  it("Text-TextStyle Heading, Text Name Validation", function () {
     //changing the Text Name and verifying
     cy.widgetText(
       this.data.TextName,
@@ -37,7 +37,7 @@ describe("Text Widget color/font/alignment Functionality", function() {
     cy.get(publishPage.backToEditor).click({ force: true });
   });
 
-  it("Test to validate text format", function() {
+  it("Test to validate text format", function () {
     //Changing the Text Style's and validating
     cy.get(widgetsPage.italics).click({ force: true });
     cy.readTextDataValidateCSS("font-style", "italic");
@@ -50,11 +50,9 @@ describe("Text Widget color/font/alignment Functionality", function() {
     cy.closePropertyPane();
   });
 
-  it("Test to validate color changes in text and background", function() {
+  it("Test to validate color changes in text and background", function () {
     //Changing the Text Style's and validating
-    cy.get(widgetsPage.textColor)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.textColor).first().click({ force: true });
     cy.xpath(widgetsPage.greenColor).click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
@@ -65,14 +63,10 @@ describe("Text Widget color/font/alignment Functionality", function() {
       .type("purple", { force: true });
     cy.wait("@updateLayout");
     cy.readTextDataValidateCSS("color", "rgb(128, 0, 128)");
-    cy.get(widgetsPage.backgroundColor)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.backgroundColor).first().click({ force: true });
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
-    cy.xpath(widgetsPage.greenColor)
-      .first()
-      .click();
+    cy.xpath(widgetsPage.greenColor).first().click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
     cy.wait("@updateLayout");
@@ -80,23 +74,17 @@ describe("Text Widget color/font/alignment Functionality", function() {
     cy.get(publishPage.backToEditor).click({ force: true });
   });
 
-  it("Test to validate text alignment", function() {
-    cy.get(widgetsPage.centerAlign)
-      .first()
-      .click({ force: true });
+  it("Test to validate text alignment", function () {
+    cy.get(widgetsPage.centerAlign).first().click({ force: true });
     cy.readTextDataValidateCSS("text-align", "center");
-    cy.get(widgetsPage.rightAlign)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.rightAlign).first().click({ force: true });
     cy.readTextDataValidateCSS("text-align", "right");
-    cy.get(widgetsPage.leftAlign)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.leftAlign).first().click({ force: true });
     cy.readTextDataValidateCSS("text-align", "left");
     cy.closePropertyPane();
   });
 
-  it("Test to validate enable scroll feature", function() {
+  it("Test to validate enable scroll feature", function () {
     cy.get(".t--property-control-enablescroll .bp3-switch").click({
       force: true,
     });

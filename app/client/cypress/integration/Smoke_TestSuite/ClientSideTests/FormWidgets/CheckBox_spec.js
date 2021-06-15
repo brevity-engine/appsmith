@@ -6,11 +6,11 @@ const dsl = require("../../../../fixtures/newFormDsl.json");
 const formWidgetDsl = require("../../../../fixtures/formWidgetdsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Checkbox Widget Functionality", function() {
+describe("Checkbox Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
-  it("Checkbox Widget Functionality", function() {
+  it("Checkbox Widget Functionality", function () {
     cy.openPropertyPane("checkboxwidget");
     /**
      * @param{Text} Random Text
@@ -37,35 +37,35 @@ describe("Checkbox Widget Functionality", function() {
     cy.getAlert(commonlocators.optionchangetextCheckbox);
     cy.PublishtheApp();
   });
-  it("Checkbox Functionality To Check Label", function() {
+  it("Checkbox Functionality To Check Label", function () {
     cy.get(publish.checkboxWidget + " " + "label").should(
       "have.text",
       this.data.checkbocInputName,
     );
     cy.get(publish.backToEditor).click();
   });
-  it("Checkbox Functionality To Check Disabled Widget", function() {
+  it("Checkbox Functionality To Check Disabled Widget", function () {
     cy.openPropertyPane("checkboxwidget");
     cy.togglebar(commonlocators.Disablejs + " " + "input");
     cy.PublishtheApp();
     cy.get(publish.checkboxWidget + " " + "input").should("be.disabled");
     cy.get(publish.backToEditor).click();
   });
-  it("Checkbox Functionality To Check Enabled Widget", function() {
+  it("Checkbox Functionality To Check Enabled Widget", function () {
     cy.openPropertyPane("checkboxwidget");
     cy.togglebarDisable(commonlocators.Disablejs + " " + "input");
     cy.PublishtheApp();
     cy.get(publish.checkboxWidget + " " + "input").should("be.enabled");
     cy.get(publish.backToEditor).click();
   });
-  it("Checkbox Functionality To Unchecked Visible Widget", function() {
+  it("Checkbox Functionality To Unchecked Visible Widget", function () {
     cy.openPropertyPane("checkboxwidget");
     cy.togglebarDisable(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publish.checkboxWidget + " " + "input").should("not.exist");
     cy.get(publish.backToEditor).click();
   });
-  it("Checkbox Functionality To Check Visible Widget", function() {
+  it("Checkbox Functionality To Check Visible Widget", function () {
     cy.openPropertyPane("checkboxwidget");
     cy.togglebar(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
@@ -73,7 +73,7 @@ describe("Checkbox Widget Functionality", function() {
     cy.get(publish.backToEditor).click();
   });
 
-  it("Checkbox Functionality To Check required toggle for form", function() {
+  it("Checkbox Functionality To Check required toggle for form", function () {
     cy.addDsl(formWidgetDsl);
     cy.openPropertyPane("checkboxwidget");
     cy.togglebar(commonlocators.requiredjs + " " + "input");
@@ -90,15 +90,13 @@ describe("Checkbox Widget Functionality", function() {
 
     cy.get(publish.backToEditor).click();
   });
-  it("Checkbox Functionality To swap label placement of  checkbox", function() {
+  it("Checkbox Functionality To swap label placement of  checkbox", function () {
     cy.openPropertyPane("checkboxwidget");
     cy.get(publish.checkboxWidget + " " + ".bp3-align-right").should(
       "not.exist",
     );
     cy.get(publish.checkboxWidget + " " + ".bp3-align-left").should("exist");
-    cy.get(commonlocators.optionalignment)
-      .last()
-      .click();
+    cy.get(commonlocators.optionalignment).last().click();
     cy.dropdownDynamicUpdated("Right");
     cy.PublishtheApp();
     cy.get(publish.checkboxWidget + " " + ".bp3-align-right").should("exist");

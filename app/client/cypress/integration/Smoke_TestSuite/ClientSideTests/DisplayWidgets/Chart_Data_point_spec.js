@@ -7,12 +7,12 @@ const pages = require("../../../../locators/Pages.json");
 const testdata = require("../../../../fixtures/testdata.json");
 const widgetsPage = require("../../../../locators/Widgets.json");
 
-describe("Chart Widget Functionality", function() {
+describe("Chart Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Input widget test with default value from chart datapoint", function() {
+  it("Input widget test with default value from chart datapoint", function () {
     cy.SearchEntityandOpen("Input1");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
@@ -25,15 +25,13 @@ describe("Chart Widget Functionality", function() {
     );
   });
 
-  it("Chart with datapoint feature validation", function() {
+  it("Chart with datapoint feature validation", function () {
     cy.SearchEntityandOpen("Chart1");
     cy.addAction(testdata.bindingDataPoint);
     cy.closePropertyPane();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500);
-    cy.xpath("(//*[local-name()='rect'])[13]")
-      .first()
-      .click({ force: true });
+    cy.xpath("(//*[local-name()='rect'])[13]").first().click({ force: true });
     cy.get(publish.inputWidget + " " + "input")
       .first()
       .invoke("attr", "value")

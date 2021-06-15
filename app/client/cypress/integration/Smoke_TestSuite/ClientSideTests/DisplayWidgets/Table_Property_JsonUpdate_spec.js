@@ -5,17 +5,17 @@ const apiPage = require("../../../../locators/ApiEditor.json");
 const publishPage = require("../../../../locators/publishWidgetspage.json");
 const testdata = require("../../../../fixtures/testdata.json");
 
-describe("Test Create Api and Bind to Table widget", function() {
+describe("Test Create Api and Bind to Table widget", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Create an API and Execute the API and bind with Table", function() {
+  it("Create an API and Execute the API and bind with Table", function () {
     cy.createAndFillApi(this.data.paginationUrl, this.data.paginationParam);
     cy.RunAPI();
   });
 
-  it("Validate Table with API data and then add a column", function() {
+  it("Validate Table with API data and then add a column", function () {
     cy.SearchEntityandOpen("Table1");
     cy.testJsontext("tabledata", "{{Api1.data.users}}");
     cy.CheckWidgetProperties(commonlocators.serverSidePaginationCheckbox);
@@ -30,7 +30,7 @@ describe("Test Create Api and Bind to Table widget", function() {
     cy.addColumn("CustomColumn");
   });
 
-  it("Update table json data and check the column names updated and validate empty value", function() {
+  it("Update table json data and check the column names updated and validate empty value", function () {
     cy.SearchEntityandOpen("Table1");
     cy.testJsontext("tabledata", JSON.stringify(this.data.TableInputWithNull));
     cy.wait("@updateLayout");
@@ -52,7 +52,7 @@ describe("Test Create Api and Bind to Table widget", function() {
     });
   });
 
-  it("Check Selected Row(s) Resets When Table Data Changes", function() {
+  it("Check Selected Row(s) Resets When Table Data Changes", function () {
     cy.isSelectRow(1);
     cy.testJsontext("tabledata", "[]");
     cy.wait("@updateLayout");

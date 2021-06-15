@@ -2,11 +2,11 @@
 
 const homePage = require("../../../../locators/HomePage.json");
 
-describe("Check if org has user icons on homepage", function() {
+describe("Check if org has user icons on homepage", function () {
   let orgid;
   let newOrganizationName;
 
-  it("create org and check if user icons exists in that org on homepage", function() {
+  it("create org and check if user icons exists in that org on homepage", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid = uid;
@@ -19,9 +19,7 @@ describe("Check if org has user icons on homepage", function() {
           .scrollIntoView()
           .should("be.visible")
           .within(() => {
-            cy.get(homePage.shareUserIcons)
-              .first()
-              .should("be.visible");
+            cy.get(homePage.shareUserIcons).first().should("be.visible");
           });
       });
     });

@@ -6,11 +6,11 @@ const dsl = require("../../../../fixtures/newFormDsl.json");
 const formWidgetDsl = require("../../../../fixtures/formWidgetdsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Switch Widget Functionality", function() {
+describe("Switch Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
-  it("Switch Widget Functionality", function() {
+  it("Switch Widget Functionality", function () {
     cy.openPropertyPane("switchwidget");
     /**
      * @param{Text} Random Text
@@ -37,35 +37,35 @@ describe("Switch Widget Functionality", function() {
     cy.getAlert(commonlocators.optionchangetextSwitch);
     cy.PublishtheApp();
   });
-  it("Switch Functionality To Switch Label", function() {
+  it("Switch Functionality To Switch Label", function () {
     cy.get(publish.switchwidget + " " + "label").should(
       "have.text",
       this.data.switchInputName,
     );
     cy.get(publish.backToEditor).click();
   });
-  it("Switch Functionality To Check Disabled Widget", function() {
+  it("Switch Functionality To Check Disabled Widget", function () {
     cy.openPropertyPane("switchwidget");
     cy.togglebar(commonlocators.Disablejs + " " + "input");
     cy.PublishtheApp();
     cy.get(publish.switchwidget + " " + "input").should("be.disabled");
     cy.get(publish.backToEditor).click();
   });
-  it("Switch Functionality To Check Enabled Widget", function() {
+  it("Switch Functionality To Check Enabled Widget", function () {
     cy.openPropertyPane("switchwidget");
     cy.togglebarDisable(commonlocators.Disablejs + " " + "input");
     cy.PublishtheApp();
     cy.get(publish.switchwidget + " " + "input").should("be.enabled");
     cy.get(publish.backToEditor).click();
   });
-  it("Switch Functionality To Unchecked Visible Widget", function() {
+  it("Switch Functionality To Unchecked Visible Widget", function () {
     cy.openPropertyPane("switchwidget");
     cy.togglebarDisable(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publish.switchwidget + " " + "input").should("not.exist");
     cy.get(publish.backToEditor).click();
   });
-  it("Switch Functionality To Check Visible Widget", function() {
+  it("Switch Functionality To Check Visible Widget", function () {
     cy.openPropertyPane("switchwidget");
     cy.togglebar(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
@@ -73,13 +73,11 @@ describe("Switch Widget Functionality", function() {
     cy.get(publish.backToEditor).click();
   });
 
-  it("Switch Functionality To swap label placement of  switch", function() {
+  it("Switch Functionality To swap label placement of  switch", function () {
     cy.openPropertyPane("switchwidget");
     cy.get(publish.switchwidget + " " + ".bp3-align-right").should("not.exist");
     cy.get(publish.switchwidget + " " + ".bp3-align-left").should("exist");
-    cy.get(commonlocators.optionalignment)
-      .last()
-      .click();
+    cy.get(commonlocators.optionalignment).last().click();
     cy.dropdownDynamicUpdated("Right");
     cy.PublishtheApp();
     cy.get(publish.switchwidget + " " + ".bp3-align-right").should("exist");

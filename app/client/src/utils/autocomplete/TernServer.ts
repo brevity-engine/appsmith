@@ -522,7 +522,7 @@ class TernServer {
           },
         ],
       },
-      function(error: Error) {
+      function (error: Error) {
         if (error) window.console.error(error);
         else doc.changed = null;
       },
@@ -635,10 +635,10 @@ class TernServer {
     };
     let mouseOnTip = false;
     let old = false;
-    CodeMirror.on(tip, "mousemove", function() {
+    CodeMirror.on(tip, "mousemove", function () {
       mouseOnTip = true;
     });
-    CodeMirror.on(tip, "mouseout", function(e: MouseEvent) {
+    CodeMirror.on(tip, "mouseout", function (e: MouseEvent) {
       const related = e.relatedTarget;
       // @ts-ignore: No types available
       if (!related || !CodeMirror.contains(tip, related)) {
@@ -658,7 +658,7 @@ class TernServer {
     cm.on("blur", f);
     cm.on("scroll", f);
     cm.on("setDoc", f);
-    return function() {
+    return function () {
       cm.off("cursorActivity", f);
       cm.off("blur", f);
       cm.off("scroll", f);

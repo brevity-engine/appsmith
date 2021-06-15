@@ -71,10 +71,8 @@ export const draggableElement = (
   const calculateNewPosition = () => {
     const { height, left, top, width } = element.getBoundingClientRect();
     const isElementOpen = height && width;
-    const {
-      left: calculatedLeft,
-      top: calculatedTop,
-    } = calculateBoundaryConfinedPosition(left, top);
+    const { left: calculatedLeft, top: calculatedTop } =
+      calculateBoundaryConfinedPosition(left, top);
 
     return {
       updatePosition: isDragged && isElementOpen,
@@ -103,7 +101,7 @@ export const draggableElement = (
   };
   const debouncedUpdatePosition = debounce(updateElementPosition, 50);
 
-  const resizeObserver = new ResizeObserver(function() {
+  const resizeObserver = new ResizeObserver(function () {
     debouncedUpdatePosition();
   });
 

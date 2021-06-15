@@ -4,7 +4,7 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 const dsl = require("../../../../fixtures/chartUpdatedDsl.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Chart Widget Functionality", function() {
+describe("Chart Widget Functionality", function () {
   before(() => {
     cy.addDsl(dsl);
   });
@@ -13,7 +13,7 @@ describe("Chart Widget Functionality", function() {
     cy.openPropertyPane("chartwidget");
   });
 
-  it("Chart Widget Functionality", function() {
+  it("Chart Widget Functionality", function () {
     /**
      * @param{Text} Random Text
      * @param{ChartWidget}Mouseover
@@ -32,9 +32,7 @@ describe("Chart Widget Functionality", function() {
       .contains("App Sign Up")
       .should("have.text", "App Sign Up");
 
-    cy.get(viewWidgetsPage.chartType)
-      .last()
-      .click({ force: true });
+    cy.get(viewWidgetsPage.chartType).last().click({ force: true });
 
     cy.get(commonlocators.dropdownmenu)
       .children()
@@ -59,9 +57,7 @@ describe("Chart Widget Functionality", function() {
       cy.get(viewWidgetsPage.rectangleChart)
         .eq(k)
         .trigger("mousemove", { force: true });
-      cy.get(viewWidgetsPage.Chartlabel)
-        .eq(k)
-        .should("have.text", labels[k]);
+      cy.get(viewWidgetsPage.Chartlabel).eq(k).should("have.text", labels[k]);
     });
     cy.get(viewWidgetsPage.xlabel)
       .click({ force: true })
@@ -76,38 +72,34 @@ describe("Chart Widget Functionality", function() {
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
   });
 
-  it("Chart Widget Functionality To Unchecked Visible Widget", function() {
+  it("Chart Widget Functionality To Unchecked Visible Widget", function () {
     cy.togglebarDisable(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publish.chartWidget).should("not.exist");
     cy.get(publish.backToEditor).click();
   });
-  it("Chart Widget Functionality To Check Visible Widget", function() {
+  it("Chart Widget Functionality To Check Visible Widget", function () {
     cy.togglebar(commonlocators.visibleCheckbox);
     cy.PublishtheApp();
     cy.get(publish.chartWidget).should("be.visible");
     cy.get(publish.backToEditor).click();
   });
-  it("Chart Widget Functionality To Uncheck Horizontal Scroll Visible", function() {
+  it("Chart Widget Functionality To Uncheck Horizontal Scroll Visible", function () {
     cy.togglebarDisable(commonlocators.horizontalScroll);
     cy.PublishtheApp();
     cy.get(publish.horizontalTab).should("not.exist");
     cy.get(publish.backToEditor).click();
   });
-  it("Chart Widget Functionality To Check Horizontal Scroll Visible", function() {
+  it("Chart Widget Functionality To Check Horizontal Scroll Visible", function () {
     cy.togglebar(commonlocators.horizontalScroll);
     cy.PublishtheApp();
-    cy.get(publish.horizontalTab)
-      .eq(1)
-      .should("exist");
+    cy.get(publish.horizontalTab).eq(1).should("exist");
     cy.get(publish.backToEditor).click();
   });
 
-  it("Chart Widget Custom Config Feature", function() {
+  it("Chart Widget Custom Config Feature", function () {
     // Note: This only checks for crashes in custom config
-    cy.get(viewWidgetsPage.chartType)
-      .last()
-      .click({ force: true });
+    cy.get(viewWidgetsPage.chartType).last().click({ force: true });
 
     cy.get(commonlocators.dropdownmenu)
       .children()

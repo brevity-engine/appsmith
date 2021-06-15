@@ -1,7 +1,7 @@
 const dsl = require("../../../../fixtures/ModalDsl.json");
 const explorer = require("../../../../locators/explorerlocators.json");
 
-describe("Modal Widget Functionality", function() {
+describe("Modal Widget Functionality", function () {
   beforeEach(() => {
     cy.addDsl(dsl);
   });

@@ -147,10 +147,8 @@ export default class DataTreeEvaluator {
 
     // Find all the paths that have changed as part of the difference and update the
     // global dependency map if an existing dynamic binding has now become legal
-    const {
-      dependenciesOfRemovedPaths,
-      removedPaths,
-    } = this.updateDependencyMap(differences, unEvalTree);
+    const { dependenciesOfRemovedPaths, removedPaths } =
+      this.updateDependencyMap(differences, unEvalTree);
     const updateDependenciesStop = performance.now();
 
     const calculateSortOrderStart = performance.now();
@@ -342,8 +340,8 @@ export default class DataTreeEvaluator {
     }
     if (isWidget(entity)) {
       // Set default property dependency
-      const defaultProperties = this.widgetConfigMap[entity.type]
-        .defaultProperties;
+      const defaultProperties =
+        this.widgetConfigMap[entity.type].defaultProperties;
       Object.entries(defaultProperties).forEach(
         ([property, defaultPropertyPath]) => {
           dependencies[`${entityName}.${property}`] = [
@@ -384,9 +382,8 @@ export default class DataTreeEvaluator {
       return sortedDependencies.reduce(
         (currentTree: DataTree, fullPropertyPath: string) => {
           this.logs.push(`evaluating ${fullPropertyPath}`);
-          const { entityName, propertyPath } = getEntityNameAndPropertyPath(
-            fullPropertyPath,
-          );
+          const { entityName, propertyPath } =
+            getEntityNameAndPropertyPath(fullPropertyPath);
           const entity = currentTree[entityName] as
             | DataTreeWidget
             | DataTreeAction;
@@ -434,8 +431,8 @@ export default class DataTreeEvaluator {
 
           if (isWidget(entity)) {
             const widgetEntity = entity;
-            const defaultPropertyMap = this.widgetConfigMap[widgetEntity.type]
-              .defaultProperties;
+            const defaultPropertyMap =
+              this.widgetConfigMap[widgetEntity.type].defaultProperties;
             const isDefaultProperty = !!Object.values(
               defaultPropertyMap,
             ).filter(
@@ -615,9 +612,8 @@ export default class DataTreeEvaluator {
       return evaluate(js, data, callbackData);
     } catch (e) {
       if (fullPropertyPath) {
-        const { entityName, propertyPath } = getEntityNameAndPropertyPath(
-          fullPropertyPath,
-        );
+        const { entityName, propertyPath } =
+          getEntityNameAndPropertyPath(fullPropertyPath);
         _.set(data, `${entityName}.jsErrorMessages.${propertyPath}`, e.message);
       } else {
         // TODO clean up
@@ -748,10 +744,8 @@ export default class DataTreeEvaluator {
                   dataTreeDiff.payload.propertyPath,
                 )
               ) {
-                const entityDependencyMap: DependencyMap = this.listEntityDependencies(
-                  entity,
-                  entityName,
-                );
+                const entityDependencyMap: DependencyMap =
+                  this.listEntityDependencies(entity, entityName);
                 if (Object.keys(entityDependencyMap).length) {
                   didUpdateDependencyMap = true;
                   // The entity might already have some dependencies,
@@ -759,15 +753,13 @@ export default class DataTreeEvaluator {
                   Object.entries(entityDependencyMap).forEach(
                     ([entityDependent, entityDependencies]) => {
                       if (this.dependencyMap[entityDependent]) {
-                        this.dependencyMap[
-                          entityDependent
-                        ] = this.dependencyMap[entityDependent].concat(
-                          entityDependencies,
-                        );
+                        this.dependencyMap[entityDependent] =
+                          this.dependencyMap[entityDependent].concat(
+                            entityDependencies,
+                          );
                       } else {
-                        this.dependencyMap[
-                          entityDependent
-                        ] = entityDependencies;
+                        this.dependencyMap[entityDependent] =
+                          entityDependencies;
                       }
                     },
                   );
@@ -776,10 +768,11 @@ export default class DataTreeEvaluator {
               // Either a new entity or a new property path has been added. Go through existing dynamic bindings and
               // find out if a new dependency has to be created because the property path used in the binding just became
               // eligible
-              const possibleReferencesInOldBindings: DependencyMap = this.getPropertyPathReferencesInExistingBindings(
-                unEvalDataTree,
-                dataTreeDiff.payload.propertyPath,
-              );
+              const possibleReferencesInOldBindings: DependencyMap =
+                this.getPropertyPathReferencesInExistingBindings(
+                  unEvalDataTree,
+                  dataTreeDiff.payload.propertyPath,
+                );
               // We have found some bindings which are related to the new property path and hence should be added to the
               // global dependency map
               if (Object.keys(possibleReferencesInOldBindings).length) {
@@ -887,21 +880,20 @@ export default class DataTreeEvaluator {
                       ].map((dep) => `${entityName}.${dep}`);
 
                       // Filter only the paths which exist in the appsmith world to avoid cyclical dependencies
-                      const filteredEntityDependencies = entityDependenciesName.filter(
-                        (path) => this.allKeys.hasOwnProperty(path),
-                      );
+                      const filteredEntityDependencies =
+                        entityDependenciesName.filter((path) =>
+                          this.allKeys.hasOwnProperty(path),
+                        );
 
                       // Now assign these existing dependent paths to the property path in dependencyMap
                       if (fullPropertyPath in this.dependencyMap) {
-                        this.dependencyMap[
-                          fullPropertyPath
-                        ] = this.dependencyMap[fullPropertyPath].concat(
-                          filteredEntityDependencies,
-                        );
+                        this.dependencyMap[fullPropertyPath] =
+                          this.dependencyMap[fullPropertyPath].concat(
+                            filteredEntityDependencies,
+                          );
                       } else {
-                        this.dependencyMap[
-                          fullPropertyPath
-                        ] = filteredEntityDependencies;
+                        this.dependencyMap[fullPropertyPath] =
+                          filteredEntityDependencies;
                       }
                     }
                   }

@@ -23,9 +23,8 @@ describe("EntityDefinitions", () => {
         name: "Some random name",
       },
     };
-    const listWidgetEntityDefinitions = entityDefinitions.LIST_WIDGET(
-      listWidgetProps,
-    );
+    const listWidgetEntityDefinitions =
+      entityDefinitions.LIST_WIDGET(listWidgetProps);
 
     const output = {
       "!doc":

@@ -3,30 +3,28 @@ import { get } from "lodash";
 import { CommentThread, Comment } from "entities/Comments/CommentsInterfaces";
 import { options as filterOptions } from "comments/AppComments/AppCommentsFilterPopover";
 
-export const refCommentThreadsSelector = (
-  refId: string,
-  applicationId?: string,
-) => (state: AppState) =>
-  get(
-    state.ui.comments.applicationCommentThreadsByRef,
-    `${applicationId}.${refId}`,
-    [],
-  );
+export const refCommentThreadsSelector =
+  (refId: string, applicationId?: string) => (state: AppState) =>
+    get(
+      state.ui.comments.applicationCommentThreadsByRef,
+      `${applicationId}.${refId}`,
+      [],
+    );
 
-export const commentThreadsSelector = (commentThreadId: string) => (
-  state: AppState,
-) => state.ui.comments.commentThreadsMap[commentThreadId];
+export const commentThreadsSelector =
+  (commentThreadId: string) => (state: AppState) =>
+    state.ui.comments.commentThreadsMap[commentThreadId];
 
-export const unpublishedCommentThreadSelector = (refId: string) => (
-  state: AppState,
-) => state.ui.comments.unpublishedCommentThreads[refId];
+export const unpublishedCommentThreadSelector =
+  (refId: string) => (state: AppState) =>
+    state.ui.comments.unpublishedCommentThreads[refId];
 
 export const commentModeSelector = (state: AppState) =>
   state.ui.comments?.isCommentMode;
 
-export const applicationCommentsSelector = (applicationId: string) => (
-  state: AppState,
-) => state.ui.comments.applicationCommentThreadsByRef[applicationId];
+export const applicationCommentsSelector =
+  (applicationId: string) => (state: AppState) =>
+    state.ui.comments.applicationCommentThreadsByRef[applicationId];
 
 export const areCommentsEnabledForUserAndApp = (state: AppState) =>
   state.ui.comments?.areCommentsEnabled;
@@ -91,14 +89,10 @@ export const getSortedAndFilteredAppCommentThreadIds = (
       // TODO verify cases where commentThread can be undefined
       if (!commentThreadsMap[a] || !commentThreadsMap[b]) return -1;
 
-      const {
-        pinnedState: isAPinned,
-        updationTime: updationTimeA,
-      } = commentThreadsMap[a];
-      const {
-        pinnedState: isBPinned,
-        updationTime: updationTimeB,
-      } = commentThreadsMap[b];
+      const { pinnedState: isAPinned, updationTime: updationTimeA } =
+        commentThreadsMap[a];
+      const { pinnedState: isBPinned, updationTime: updationTimeB } =
+        commentThreadsMap[b];
 
       const sortIdx = getSortIndexBool(
         !!isAPinned?.active,

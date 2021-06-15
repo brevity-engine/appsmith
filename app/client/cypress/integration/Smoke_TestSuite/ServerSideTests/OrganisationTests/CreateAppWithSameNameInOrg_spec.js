@@ -1,11 +1,11 @@
 /// <reference types="Cypress" />
 
-describe("Create org and a new app / delete and recreate app", function() {
+describe("Create org and a new app / delete and recreate app", function () {
   let orgid;
   let appid;
   let newOrganizationName;
 
-  it("create app within an org and delete and re-create another app with same name", function() {
+  it("create app within an org and delete and re-create another app with same name", function () {
     cy.NavigateToHome();
     cy.generateUUID().then((uid) => {
       orgid = uid;

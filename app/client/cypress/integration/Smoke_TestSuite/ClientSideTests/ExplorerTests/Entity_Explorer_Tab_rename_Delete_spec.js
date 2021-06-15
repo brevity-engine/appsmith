@@ -6,18 +6,18 @@ const dsl = require("../../../../fixtures/tabdsl.json");
 const pages = require("../../../../locators/Pages.json");
 const tabname = "UpdatedTab";
 
-describe("Tab widget test", function() {
+describe("Tab widget test", function () {
   const tabname = "UpdatedTab";
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Tab Widget Functionality To rename Tabs from entity explorer", function() {
+  it("Tab Widget Functionality To rename Tabs from entity explorer", function () {
     cy.GlobalSearchEntity("Tab 1");
     cy.RenameEntity(tabname);
   });
 
-  it("Tab name validation in properties and widget ", function() {
+  it("Tab name validation in properties and widget ", function () {
     cy.openPropertyPane("tabswidget");
     cy.closePropertyPane();
     cy.get(Layoutpage.tabWidget)
@@ -26,7 +26,7 @@ describe("Tab widget test", function() {
       .should("be.visible");
   });
 
-  it("Tab Widget Functionality To delete Tabs from entity explorer", function() {
+  it("Tab Widget Functionality To delete Tabs from entity explorer", function () {
     cy.GlobalSearchEntity("Tab 2");
     cy.RenameEntity(tabname);
     cy.validateMessage(tabname);

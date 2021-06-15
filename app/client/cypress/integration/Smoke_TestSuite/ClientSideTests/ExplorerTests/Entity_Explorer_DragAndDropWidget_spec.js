@@ -8,14 +8,12 @@ const publish = require("../../../../locators/publishWidgetspage.json");
 
 const pageid = "MyPage";
 
-describe("Entity explorer Drag and Drop widgets testcases", function() {
-  it("Drag and drop form widget and validate", function() {
+describe("Entity explorer Drag and Drop widgets testcases", function () {
+  it("Drag and drop form widget and validate", function () {
     cy.log("Login Successful");
     cy.get(explorer.addWidget).click();
     cy.get(commonlocators.entityExplorersearch).should("be.visible");
-    cy.get(commonlocators.entityExplorersearch)
-      .clear()
-      .type("form");
+    cy.get(commonlocators.entityExplorersearch).clear().type("form");
     cy.dragAndDropToCanvas("formwidget", { x: 300, y: 80 });
     cy.get(formWidgetsPage.formD).click();
     /**
@@ -31,9 +29,7 @@ describe("Entity explorer Drag and Drop widgets testcases", function() {
     /**
      * @param{Text} Random Colour
      */
-    cy.get(widgetsPage.backgroundcolorPicker)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.backgroundcolorPicker).first().click({ force: true });
     cy.xpath(widgetsPage.greenColor).click();
     cy.get(formWidgetsPage.formD)
       .should("have.css", "background-color")
@@ -42,20 +38,14 @@ describe("Entity explorer Drag and Drop widgets testcases", function() {
      * @param{toggleButton Css} Assert to be checked
      */
     cy.togglebar(commonlocators.scrollView);
-    cy.get(formWidgetsPage.formD)
-      .scrollTo("bottom")
-      .should("be.visible");
+    cy.get(formWidgetsPage.formD).scrollTo("bottom").should("be.visible");
     cy.get(commonlocators.editPropCrossButton).click({ force: true });
     cy.get(explorer.closeWidgets).click();
     cy.PublishtheApp();
-    cy.get(publish.backToEditor)
-      .first()
-      .click();
+    cy.get(publish.backToEditor).first().click();
     cy.SearchEntityandOpen("FormTest");
-    cy.get(explorer.property)
-      .last()
-      .click({ force: true });
-    cy.get(apiwidget.propertyList).then(function($lis) {
+    cy.get(explorer.property).last().click({ force: true });
+    cy.get(apiwidget.propertyList).then(function ($lis) {
       expect($lis).to.have.length(2);
       expect($lis.eq(0)).to.contain("{{FormTest.isVisible}}");
       expect($lis.eq(1)).to.contain("{{FormTest.data}}");

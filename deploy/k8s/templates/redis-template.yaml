@@ -29,18 +29,18 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       containers:
-      - name: redis
-        image: redis
-        ports:
-          - containerPort: 6379
-        volumeMounts:
-          - name: redis-persistent-storage
-            mountPath: /data
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-persistent-storage
+              mountPath: /data
   volumeClaimTemplates:
-  - metadata:
-      name: redis-persistent-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 5Gi
+    - metadata:
+        name: redis-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi

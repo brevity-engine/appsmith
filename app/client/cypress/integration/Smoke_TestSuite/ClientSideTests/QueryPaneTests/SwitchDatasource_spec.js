@@ -1,7 +1,7 @@
 const datasource = require("../../../../locators/DatasourcesEditor.json");
 const queryLocators = require("../../../../locators/QueryEditor.json");
 
-describe("Switch datasource", function() {
+describe("Switch datasource", function () {
   let postgresDatasourceName;
   let mongoDatasourceName;
 
@@ -9,7 +9,7 @@ describe("Switch datasource", function() {
     cy.startRoutesForDatasource();
   });
 
-  it("Create postgres datasource", function() {
+  it("Create postgres datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
     cy.generateUUID().then((uid) => {
@@ -31,7 +31,7 @@ describe("Switch datasource", function() {
     cy.testSaveDatasource();
   });
 
-  it("Create mongo datasource", function() {
+  it("Create mongo datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.MongoDB).click();
     cy.generateUUID().then((uid) => {
@@ -54,7 +54,7 @@ describe("Switch datasource", function() {
     cy.testSaveDatasource();
   });
 
-  it("By switching datasources execute a query with both the datasources", function() {
+  it("By switching datasources execute a query with both the datasources", function () {
     cy.NavigateToQueryEditor();
 
     cy.contains(".t--datasource-name", postgresDatasourceName)
@@ -91,7 +91,7 @@ describe("Switch datasource", function() {
     );
   });
 
-  it("Delete the query and datasources", function() {
+  it("Delete the query and datasources", function () {
     cy.get(queryLocators.deleteQuery).click();
     cy.wait("@deleteAction").should(
       "have.nested.property",

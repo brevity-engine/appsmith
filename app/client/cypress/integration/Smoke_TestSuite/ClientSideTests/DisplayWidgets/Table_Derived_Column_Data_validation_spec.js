@@ -8,17 +8,17 @@ const widgetsPage = require("../../../../locators/Widgets.json");
 const publish = require("../../../../locators/publishWidgetspage.json");
 const pages = require("../../../../locators/Pages.json");
 
-describe("Test Create Api and Bind to Table widget", function() {
+describe("Test Create Api and Bind to Table widget", function () {
   before(() => {
     cy.addDsl(dsl);
   });
 
-  it("Create an API and Execute the API and bind with Table", function() {
+  it("Create an API and Execute the API and bind with Table", function () {
     cy.createAndFillApi(this.data.paginationUrl, this.data.paginationParam);
     cy.RunAPI();
   });
 
-  it("Validate Table with API data and then add a column", function() {
+  it("Validate Table with API data and then add a column", function () {
     cy.SearchEntityandOpen("Table1");
     cy.testJsontext("tabledata", "{{Api1.data.users}}");
     cy.CheckWidgetProperties(commonlocators.serverSidePaginationCheckbox);
@@ -33,13 +33,11 @@ describe("Test Create Api and Bind to Table widget", function() {
     cy.addColumn("CustomColumn");
   });
 
-  it("Table widget toggle test for background color", function() {
+  it("Table widget toggle test for background color", function () {
     cy.editColumn("id");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
-    cy.get(widgetsPage.toggleJsBcgColor)
-      .first()
-      .click({ force: true });
+    cy.get(widgetsPage.toggleJsBcgColor).first().click({ force: true });
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
     cy.toggleJsAndUpdate("tabledata", "Green");
@@ -48,7 +46,7 @@ describe("Test Create Api and Bind to Table widget", function() {
     cy.readTabledataValidateCSS("1", "0", "background-color", "rgb(0, 128, 0)");
   });
 
-  it("Edit column name and validate test for computed value based on column type selected", function() {
+  it("Edit column name and validate test for computed value based on column type selected", function () {
     cy.get(commonlocators.editPropCrossButton).click();
     cy.SearchEntityandOpen("Table1");
     cy.editColumn("customColumn1");
@@ -63,7 +61,7 @@ describe("Test Create Api and Bind to Table widget", function() {
     cy.closePropertyPane();
   });
 
-  it("Update table json data and check the column names updated", function() {
+  it("Update table json data and check the column names updated", function () {
     cy.SearchEntityandOpen("Table1");
     cy.testJsontext("tabledata", JSON.stringify(this.data.TableInputUpdate));
     cy.wait("@updateLayout");

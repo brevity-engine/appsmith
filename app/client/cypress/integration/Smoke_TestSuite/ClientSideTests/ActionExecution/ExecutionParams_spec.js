@@ -4,7 +4,7 @@ const commonlocators = require("../../../../locators/commonlocators.json");
 const queryLocators = require("../../../../locators/QueryEditor.json");
 const datasource = require("../../../../locators/DatasourcesEditor.json");
 
-describe("API Panel Test Functionality", function() {
+describe("API Panel Test Functionality", function () {
   let datasourceName;
   before(() => {
     cy.addDsl(dsl);
@@ -12,7 +12,7 @@ describe("API Panel Test Functionality", function() {
   beforeEach(() => {
     cy.startRoutesForDatasource();
   });
-  it("Create a postgres datasource", function() {
+  it("Create a postgres datasource", function () {
     cy.NavigateToDatasourceEditor();
     cy.get(datasource.PostgreSQL).click();
 
@@ -33,9 +33,7 @@ describe("API Panel Test Functionality", function() {
       .click();
     cy.get(queryLocators.templateMenu).click();
     cy.get(queryLocators.settings).click({ force: true });
-    cy.get(queryLocators.switch)
-      .last()
-      .click({ force: true });
+    cy.get(queryLocators.switch).last().click({ force: true });
     cy.get(queryLocators.query).click({ force: true });
     cy.get(".CodeMirror textarea")
       .first()
@@ -48,7 +46,7 @@ describe("API Panel Test Functionality", function() {
     cy.runQuery();
   });
 
-  it("Will pass execution params", function() {
+  it("Will pass execution params", function () {
     // Bind the table
     cy.SearchEntityandOpen("Table1");
     cy.testJsontext("tabledata", "{{Query1.data}}");
@@ -91,9 +89,7 @@ describe("API Panel Test Functionality", function() {
     });
 
     // Click Static button
-    cy.get(publishPage.buttonWidget)
-      .first()
-      .click();
+    cy.get(publishPage.buttonWidget).first().click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(2000);
     // Assert statically bound "users" data
@@ -102,9 +98,7 @@ describe("API Panel Test Functionality", function() {
     });
 
     // Click dynamic button
-    cy.get(publishPage.buttonWidget)
-      .eq(1)
-      .click();
+    cy.get(publishPage.buttonWidget).eq(1).click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(2000);
     // Assert dynamically bound "todos" data
