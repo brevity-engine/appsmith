@@ -23,8 +23,7 @@ The fastest way to get started with appsmith is using our cloud-hosted version. 
   _ Minikube: [Setup Kubectl](https://minikube.sigs.k8s.io/docs/handbook/kubectl/)
   _ Google Cloud Kubernetes: [Configuring cluster access for kubectl
   ](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl)
-  _ Aws EKS: [Create a kubeconfig for Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
-      * Microk8s: [Working with kubectl](https://microk8s.io/docs/working-with-kubectl)
+  _ Aws EKS: [Create a kubeconfig for Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) \* Microk8s: [Working with kubectl](https://microk8s.io/docs/working-with-kubectl)
 - Kubernetes NGINX Ingress Controller must be enable on your cluster by default. Please make sure that you install the right version for your cluster
   - Minikube: [Set up Ingress on Minikube with the NGINX Ingress Controller](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
   - Google Cloud Kubernetes: [Ingress with NGINX controller on Google Kubernetes Engine](https://kubernetes.github.io/ingress-nginx/deploy/)
